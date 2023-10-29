@@ -1,0 +1,30 @@
+{
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "next/core-web-vitals",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+        "semi": ["error", "always"],
+        "indent": ["error", 4],
+        "quotes": ["error", "single"],
+        "no-trailing-spaces": "error",
+        "no-tabs": "error",
+        "react/react-in-jsx-scope": "off",
+        "react/no-deprecated": "error"
+    },
+    "ignorePatterns": [
+        "node_modules/",
+        "public/",
+        "dist/"
+    ]
+}
