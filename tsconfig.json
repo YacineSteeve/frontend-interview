@@ -1,0 +1,66 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": false,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "alwaysStrict": true,
+        "strictNullChecks": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "allowUnreachableCode": false,
+        "noFallthroughCasesInSwitch": true,
+        "target": "es2017",
+        "declaration": true,
+        "sourceMap": true,
+        "checkJs": true,
+        "jsx": "preserve",
+        "incremental": false,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "@public/*": [
+                "./public/*"
+            ],
+            "@components/*": [
+                "./src/components/*"
+            ],
+            "@styles/*": [
+                "./src/styles/*"
+            ]
+        },
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+    },
+    "include": [
+        "**/*.(ts|tsx)",
+        ".next/**/*",
+        "dist/types/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
