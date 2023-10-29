@@ -8,10 +8,7 @@ const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     return (
         <Fragment>
             <Header/>
-            <main className="flex flex-col items-center border-1 border-green-300 bg-snow px-52 min-h-screen">
-                <div className="flex flex-col pt-20 text-lightblack text-[3.25rem]">
-                    Find Your Dream Programs
-                </div>
+            <main className="flex flex-col items-center py-20 border-1 border-green-300 bg-snow px-56 min-h-screen">
                 {children}
             </main>
             <Footer />
