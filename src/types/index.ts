@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type SearchParams = {
     limit: number,
     ordering: string,
@@ -15,3 +17,10 @@ export type Option = {
     label: string;
     value: string;
 };
+
+export type ChipType = 'language' | 'duration' | 'grade' | 'education' | 'fees';
+
+export type Chip = {
+    color: string;
+    icon: ReactNode;
+}

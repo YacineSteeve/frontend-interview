@@ -1,3 +1,5 @@
+'use client';
+
 import type { FunctionComponent } from 'react';
 import type { Option } from '@/types';
 import FilterInput  from '@components/FilterInput';
@@ -27,7 +29,7 @@ const Filters: FunctionComponent = () => {
                 <FilterInput label="Education Type" options={countries}/>
                 <FilterInput label="Campus Type" options={countries}/>
                 <FilterInput label="Education Language" options={countries}/>
-                <CardButton label="CLEAR FILTERS"/>
+                <CardButton label="CLEAR FILTERS" onClick={() => alert('Successfully cleared filters !')}/>
             </Card>
         </section>
     );

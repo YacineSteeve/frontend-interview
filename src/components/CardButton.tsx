@@ -1,12 +1,21 @@
-import type { FunctionComponent } from 'react';
+import type { FunctionComponent, MouseEvent } from 'react';
 
 type CardButtonProps = {
     label: string;
+    onClick: () => void;
 };
 
-const CardButton: FunctionComponent<CardButtonProps> = ({ label }) => {
+const CardButton: FunctionComponent<CardButtonProps> = ({ label, onClick }) => {
+    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        onClick();
+    };
+
     return (
-        <button className="w-full text-white text-sm py-2 rounded-2xl bg-blue-600 hover:bg-blue-700">
+        <button
+            onClick={handleClick}
+            className="w-full text-white text-sm py-2 rounded-2xl bg-blue-600 hover:bg-blue-700"
+        >
             {label}
         </button>
     );
