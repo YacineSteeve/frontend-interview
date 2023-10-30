@@ -21,7 +21,7 @@ const SearchBar: FunctionComponent = () => {
             />
             <label
                 htmlFor="search-program"
-                className={`absolute left-4 flex items-center p-1 h-1/2 bg-white peer-focus:text-blue-500 ${
+                className={`absolute left-4 flex items-center p-1 h-1/2 bg-white peer-focus:bg-snow peer-focus:text-blue-500 ${
                     searchQuery === ''
                         ? 'top-1/4 peer-focus:text-sm peer-focus:-top-1/4'
                         : 'text-sm -top-1/4'

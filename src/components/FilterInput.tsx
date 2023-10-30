@@ -48,36 +48,23 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
     }, [optionSearch, options]);
 
     return (
-        <div className="flex flex-col gap-1.5 w-full h-fit">
+        <div className="relative flex flex-col gap-2 w-full h-fit">
             <p className="w-full h-fit text-lightblack">{label}</p>
             <div
                 ref={ref}
-                className="relative flex"
+                tabIndex={0}
+                className="peer group relative flex flex-col min-h-[40px] rounded-md border-1 border-gray-200 outline outline-1 outline-gray-300 hover:cursor-text hover:outline-black focus-within:outline-2 focus-within:!outline-blue-500"
             >
-                <input
-                    id={`select-${label}`}
-                    type="text"
-                    value={optionSearch}
-                    onChange={handleOptionSearch}
-                    onFocus={() => setIsVisible(true)}
-                    className="peer w-full h-full min-h-[40px] pl-4 pr-16 text-lightblack rounded-md border-1 border-gray-200 outline outline-1 outline-gray-300 hover:outline-black focus:outline-2 focus:outline-blue-500"
-                />
-                <label
-                    htmlFor={`select-${label}`}
-                    className={`absolute flex items-center p-1 h-1/2 bg-white left-4 peer-focus:text-blue-500 ${
-                        selectedOptions.length > 0
-                            ? 'text-xs -top-1/4'
-                            : 'top-1/4 peer-focus:text-xs peer-focus:-top-1/4'
-                    }`}
-                >
-                    Select {label}
-                </label>
-                <div className="absolute top-2 left-2 flex flex-wrap gap-2 w-fit h-full pointer-events-none mr-16">
+                <div className={`flex flex-wrap gap-2 w-fit h-full pointer-events-none mr-16 ${
+                    selectedOptions.length > 0
+                        ? 'p-2'
+                        : 'hidden'
+                }`}>
                     {
                         selectedOptions.map((option) => (
                             <span
                                 key={option.value}
-                                className="flex justify-evenly items-center gap-1 p-1 text-lightblack text-xs w-fit h-fit rounded-2xl bg-gray-100 pointer-events-auto"
+                                className="flex justify-evenly items-center gap-1 p-1 text-lightblack text-sm w-fit h-fit rounded-2xl bg-gray-100 pointer-events-auto"
                             >
                                 {option.label}
                                 <svg
@@ -98,9 +85,22 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
                         ))
                     }
                 </div>
-                <div className="absolute bottom-1/4 right-2 h-1/2 flex items-center gap-1 text-gray-500 child:cursor-pointer child:rounded-full child-hover:bg-gray-100">
+                <input
+                    id={`select-${label}`}
+                    type="text"
+                    value={optionSearch}
+                    onChange={handleOptionSearch}
+                    onFocus={() => setIsVisible(true)}
+                    className={`pl-4 text-lightblack rounded-md focus:outline-none ${
+                        selectedOptions.length > 0
+                            ? 'h-0 pr-4 focus:h-10 focus:my-2 focus:mx-auto focus:w-11/12 focus:bg-gray-100 group-focus:h-10 group-focus:bg-gray-100 group-focus:my-2 group-focus:mx-auto group-focus:w-11/12'
+                            : 'h-10 pr-16'
+                    }`}
+                />
+                <div
+                    className="absolute bottom-1/4 right-2 h-1/2 flex items-center gap-1 text-gray-500 child:cursor-pointer child:rounded-full child-hover:bg-gray-100">
                     <svg
-                        className={`p-1 ${selectedOptions.length > 0 ? 'block' : 'hidden'}`}
+                        className={`p-1 z-10 ${selectedOptions.length > 0 ? 'block' : 'hidden'}`}
                         onClick={clearFilters}
                         focusable="false"
                         aria-hidden="true"
@@ -114,7 +114,7 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
                             d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
                     </svg>
                     <svg
-                        className=""
+                        onClick={() => setIsVisible((prevVisible) => !prevVisible)}
                         focusable="false"
                         aria-hidden="true"
                         viewBox="0 0 24 24"
@@ -133,6 +133,16 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
                     onSelect={selectFilter}
                 />
             </div>
+            <label
+                htmlFor={`select-${label}`}
+                className={`absolute left-4 flex items-center px-1 h-fit bg-white pointer-events-none peer-focus-within:text-blue-500 ${
+                    selectedOptions.length > 0
+                        ? 'text-xs top-6'
+                        : 'top-10 peer-focus-within:text-xs peer-focus-within:top-6'
+                }`}
+            >
+                Select {label}
+            </label>
         </div>
     );
 };

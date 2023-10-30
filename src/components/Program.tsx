@@ -13,6 +13,7 @@ const Program: FunctionComponent<ProgramProps> = ({ id }) => {
         <Card orientation="horizontal">
             <Image
                 src="/images/university.png"
+                priority={true}
                 alt={'Ankara Medipol University'}
                 width={250}
                 height={190}
