@@ -132,8 +132,8 @@ const Footer: FunctionComponent = () => {
                                 <p className="text-lightblack text-xl">{column.title}</p>
                                 <ul className="flex flex-col gap-3">
                                     {
-                                        column.links.map((link, index) => (
-                                            <li key={index}>
+                                        column.links.map((link) => (
+                                            <li key={link.href}>
                                                 <Link href={link.href}>
                                                     {link.label}
                                                 </Link>
@@ -151,7 +151,7 @@ const Footer: FunctionComponent = () => {
                     <ul className="flex gap-3">
                         {
                             socialLinks.map((link, index) => (
-                                <Fragment key={index}>
+                                <Fragment key={link.href}>
                                     <li>
                                         <Link href={link.href} target="_blank">
                                             {link.label}

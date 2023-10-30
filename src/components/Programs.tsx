@@ -21,7 +21,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ filters }) => {
                 <SortBy/>
             </div>
             <div className="flex flex-col gap-6">
-                <SearchBar query={''}/>
+                <SearchBar />
                 {
                     programs.map((program, index) => (
                         <Program key={index} id={program} />

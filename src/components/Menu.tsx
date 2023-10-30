@@ -35,8 +35,8 @@ const Menu: FunctionComponent = () => {
         <nav className="flex h-full">
             <ul className="flex items-center h-full w-full gap-2">
                 {
-                    menuLinks.map((menuLink, index) => (
-                        <li key={index}>
+                    menuLinks.map((menuLink) => (
+                        <li key={menuLink.link}>
                             <Link
                                 href={menuLink.link}
                                 className="flex justify-center items-center text-lightblack h-full p-2.5 cursor-pointer">

@@ -1,23 +1,37 @@
 'use client';
 
-import type { FunctionComponent } from 'react';
+import { useState } from 'react';
+import type { FunctionComponent, ChangeEvent } from 'react';
 
-type SearchBarProps = {
-    query: string;
-};
+const SearchBar: FunctionComponent = () => {
+    const [searchQuery, setSearchQuery] = useState<string>('');
 
-const SearchBar: FunctionComponent<SearchBarProps> = ({ query }) => {
+    const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(event.target.value);
+    };
+
     return (
         <div className="relative">
             <input
+                id="search-program"
                 type="search"
-                placeholder="Type Interested Program"
-                value={query}
-                onChange={() => console.log('Hello World!')}
-                className="w-full h-14 pl-4 pr-12 rounded-2xl border-1 border-gray-200 outline outline-1 outline-gray-300 hover:outline-black focus:outline-2 focus:outline-blue-500"
+                value={searchQuery}
+                onChange={handleSearchInput}
+                className="peer w-full h-14 pl-4 pr-12 text-lightblack rounded-2xl border-1 border-gray-200 outline outline-1 outline-gray-300 hover:outline-black focus:outline-2 focus:outline-blue-500"
             />
+            <label
+                htmlFor="search-program"
+                className={`absolute left-4 flex items-center p-1 h-1/2 bg-white peer-focus:text-blue-500 ${
+                    searchQuery === ''
+                        ? 'top-1/4 peer-focus:text-sm peer-focus:-top-1/4'
+                        : 'text-sm -top-1/4'
+                }`}
+            >
+                Type Interested Program
+            </label>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
                 aria-hidden="true"
                 role="img"
                 className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500"

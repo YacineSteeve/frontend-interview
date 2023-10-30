@@ -2,30 +2,22 @@
 
 import type {FunctionComponent} from 'react';
 import type { Option } from '@/types';
-import { useToggle } from '@/hooks';
+import { useToggleVisibility } from '@/hooks';
 import Select from '@components/Select';
 
 const Language: FunctionComponent = () => {
     const languages: Option[] = [
-        {
-            label: 'Türkçe',
-            value: 'tr',
-        },
-        {
-            label: 'English',
-            value: 'en',
-        },
-        {
-            label: 'Français',
-            value: 'fr',
-        }
+        { label: 'Türkçe', value: 'tr' },
+        { label: 'English', value: 'en'},
+        { label: 'Français', value: 'fr' }
     ];
 
-    const [showLanguages, toggleLanguages] = useToggle(false);
+    const { ref, isVisible, setIsVisible } = useToggleVisibility<HTMLDivElement>(false);
 
     return (
         <div
-            onClick={toggleLanguages}
+            ref={ref}
+            onClick={() => setIsVisible((prevIsVisible) => !prevIsVisible)}
             className="relative p-2 rounded-full cursor-pointer hover:bg-black hover:bg-opacity-5"
         >
             <svg
@@ -43,10 +35,10 @@ const Language: FunctionComponent = () => {
                 ></path>
             </svg>
             <Select
-                visible={showLanguages}
+                visible={isVisible}
                 options={languages}
-                selected={languages[1] as Option}
-                onSelect={toggleLanguages}
+                selected={[languages[1] as Option]}
+                onSelect={() => setIsVisible(false)}
             />
         </div>
     );
