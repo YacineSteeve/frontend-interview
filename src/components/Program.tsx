@@ -37,10 +37,11 @@ const Program: FunctionComponent<ProgramProps> = ({ id }) => {
                 </div>
             </div>
             <div className="flex flex-col justify-between items-center w-1/4 pl-4 border-l">
-                <p>
+                <p className="text-2xl text-blue-400">
                     2500.00 USD
                 </p>
-                <hr className="w-11/12"/>
+                <Chip label="English" type="Language"/>
+                <hr className="w-11/12 my-1"/>
                 <p>
                     Deadline: 10/31/2023
                     Season: 2023 Fall (September 2023)

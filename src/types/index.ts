@@ -10,3 +10,8 @@ export type SearchParams = {
     campusType: number,
     educationLanguage: number,
 }>;
+
+export type Option = {
+    label: string;
+    value: string;
+};

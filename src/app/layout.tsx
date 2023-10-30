@@ -4,6 +4,7 @@ import '@styles/global.css';
 
 const metadata: Metadata = {
     title: 'Askuni | Find Your Dream Programs',
+    description: 'Find your dream programs for better future.',
 };
 
 const RootLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {

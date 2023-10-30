@@ -1,5 +1,7 @@
 import type { FunctionComponent } from 'react';
 import type { SearchParams } from '@/types';
+import SortBy from '@components/SortBy';
+import SearchBar from '@components/SearchBar';
 import Program from '@components/Program';
 
 type ProgramsProps = {
@@ -12,12 +14,14 @@ const Programs: FunctionComponent<ProgramsProps> = ({ filters }) => {
 
     return (
         <section className="flex flex-col w-3/4">
-            <div className="flex justify-between h-14">
+            <div className="flex justify-between items-start h-14">
                 <p className="text-md">
                     We found 6 programs for you
                 </p>
+                <SortBy/>
             </div>
             <div className="flex flex-col gap-6">
+                <SearchBar query={''}/>
                 {
                     programs.map((program, index) => (
                         <Program key={index} id={program} />
