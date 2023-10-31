@@ -2,20 +2,27 @@
 
 import { useState, useEffect } from 'react';
 import type { FunctionComponent, ChangeEvent } from 'react';
-import { useToggleVisibility } from '@/hooks';
-import type { Option } from '@/types';
+import { useToggleVisibility, useSearchParamUpdate } from '@/hooks';
+import type { Filter, Option } from '@/types';
 import Select from '@components/Select';
 
 type FilterInputProps = {
-    label: string;
-    options: Option[];
+    filter: Filter;
 };
 
-const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) => {
-    const [filteredOptions, setFilteredOptions] = useState<Option[]>(options);
-    const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+const FilterInput: FunctionComponent<FilterInputProps> = ({ filter }) => {
+    const [filteredOptions, setFilteredOptions] = useState<Option[]>(filter.options);
     const [optionSearch, setOptionSearch] = useState<string>('');
+    const [initialSearchParam, setSearchParam] = useSearchParamUpdate(filter.value);
+    const [selectedOptions, setSelectedOptions] = useState<Option[]>(
+        filter.options.filter((option) => initialSearchParam.includes(option.value))
+    );
     const { ref, isVisible, setIsVisible } = useToggleVisibility<HTMLDivElement>(false);
+
+    const updateSearchParam = (selectedOptions: Option[]) => {
+        setSelectedOptions(selectedOptions);
+        setSearchParam(selectedOptions.map((option) => option.value));
+    };
 
     const selectFilter = (option: Option) => {
         setIsVisible(false);
@@ -26,15 +33,15 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
             return;
         }
 
-        setSelectedOptions((prevSelected) => [...prevSelected, option]);
+        updateSearchParam([...selectedOptions, option]);
     };
 
     const removeFilter = (option: Option) => {
-        setSelectedOptions((prevSelected) => prevSelected.filter((selected) => selected.value !== option.value));
+        updateSearchParam(selectedOptions.filter((selected) => selected.value !== option.value));
     };
 
     const clearFilters = () => {
-        setSelectedOptions([]);
+        updateSearchParam([]);
     };
 
     const handleOptionSearch = (event: ChangeEvent<HTMLInputElement>) => {
@@ -42,14 +49,14 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
     };
 
     useEffect(() => {
-        setFilteredOptions(options.filter((option) => {
+        setFilteredOptions(filter.options.filter((option) => {
             return option.label.toLowerCase().includes(optionSearch.toLowerCase());
         }));
-    }, [optionSearch, options]);
+    }, [optionSearch, filter]);
 
     return (
         <div className="relative flex flex-col gap-2 w-full h-fit">
-            <p className="w-full h-fit text-lightblack">{label}</p>
+            <p className="w-full h-fit text-lightblack">{filter.label}</p>
             <div
                 ref={ref}
                 tabIndex={0}
@@ -86,7 +93,7 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
                     }
                 </div>
                 <input
-                    id={`select-${label}`}
+                    id={`select-${filter.label}`}
                     type="text"
                     value={optionSearch}
                     onChange={handleOptionSearch}
@@ -134,14 +141,14 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ label, options }) =>
                 />
             </div>
             <label
-                htmlFor={`select-${label}`}
+                htmlFor={`select-${filter.label}`}
                 className={`absolute left-4 flex items-center px-1 h-fit bg-white pointer-events-none peer-focus-within:text-blue-500 ${
                     selectedOptions.length > 0
                         ? 'text-xs top-6'
                         : 'top-10 peer-focus-within:text-xs peer-focus-within:top-6'
                 }`}
             >
-                Select {label}
+                Select {filter.label}
             </label>
         </div>
     );

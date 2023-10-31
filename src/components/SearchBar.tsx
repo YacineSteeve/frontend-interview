@@ -2,12 +2,16 @@
 
 import { useState } from 'react';
 import type { FunctionComponent, ChangeEvent } from 'react';
+import { useSearchParamUpdate } from '@/hooks';
+import type { SearchParams } from '@/types';
 
 const SearchBar: FunctionComponent = () => {
-    const [searchQuery, setSearchQuery] = useState<string>('');
+    const [initialParam, setSearchParam] = useSearchParamUpdate('query');
+    const [searchQuery, setSearchQuery] = useState<SearchParams['query']>(initialParam[0]);
 
     const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
+        setSearchParam([event.target.value]);
     };
 
     return (

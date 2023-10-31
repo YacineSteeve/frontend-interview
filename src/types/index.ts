@@ -1,22 +1,31 @@
 import type { ReactNode } from 'react';
 
-export type SearchParams = {
-    limit: number,
-    ordering: string,
-} & Partial<{
-    offset: number,
-    country: number,
-    providerType: number,
-    gradeType: number,
-    educationType: number,
-    campusType: number,
-    educationLanguage: number,
-}>;
-
 export type Option = {
     label: string;
     value: string;
 };
+
+export type OptionalFilter =
+    | 'country'
+    | 'providerType'
+    | 'gradeType'
+    | 'educationType'
+    | 'campusType'
+    | 'educationLanguage';
+
+export type Filter = {
+    label: string;
+    value: OptionalFilter;
+    options: Option[];
+};
+
+export type SearchParams = {
+    limit: string;
+    ordering: string;
+} & Partial<{
+    query: string;
+    offset: string;
+} & Record<OptionalFilter, string>>;
 
 export type ChipType = 'language' | 'duration' | 'grade' | 'education' | 'fees';
 
