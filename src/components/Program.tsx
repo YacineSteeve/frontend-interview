@@ -8,9 +8,9 @@ import Card from '@components/Card';
 import CardButton from '@components/CardButton';
 import Chip from '@components/Chip';
 
-type ProgramProps = {
+interface ProgramProps {
     program: ProgramType
-};
+}
 
 const Program: FunctionComponent<ProgramProps> = ({ program }) => {
     const formattedDate = program.applicationDeadline ? new Date(program.applicationDeadline).toLocaleDateString('en-US', {

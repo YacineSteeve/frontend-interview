@@ -1,6 +1,11 @@
 import type { ReactNode } from 'react';
 import type { ListResult, RecordModel } from 'pocketbase';
 
+export type Link = {
+    label: string;
+    href: string;
+};
+
 export type Option = {
     label: string;
     value: string;

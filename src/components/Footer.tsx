@@ -2,107 +2,103 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import type { FunctionComponent } from 'react';
-
-type FooterLink = {
-    label: string;
-    href: string;
-};
+import type { Link as FooterLink } from '@/types';
 
 type FooterColumn = {
     title: string;
     links: FooterLink[];
 };
 
+const columns: FooterColumn[] = [
+    {
+        title: 'Navigations',
+        links: [
+            {
+                label: 'About Us',
+                href: '/#about'
+            },
+            {
+                label: 'Programs',
+                href: '/search'
+            },
+            {
+                label: 'Universities',
+                href: '/universities'
+            },
+            {
+                label: 'Articles',
+                href: '/articles'
+            },
+            {
+                label: 'Contact',
+                href: '/contact'
+            },
+            {
+                label: 'Fairs',
+                href: '/fairs'
+            },
+            {
+                label: 'Become a Partner',
+                href: '/become-a-partner'
+            }
+        ]
+    },
+    {
+        title: 'For Students',
+        links: [
+            {
+                label: 'How To Apply',
+                href: '/how-to-apply'
+            },
+            {
+                label: 'Candidate Form',
+                href: '/candidate-form'
+            },
+        ]
+    },
+    {
+        title: 'Legal',
+        links: [
+            {
+                label: 'Privacy Policy',
+                href: '/privacy-policy'
+            },
+            {
+                label: 'Terms and Conditions',
+                href: '/terms-and-conditions'
+            },
+            {
+                label: 'Cookie Policy',
+                href: '/cookie-policy'
+            },
+            {
+                label: 'Disclaimer',
+                href: '/disclaimer'
+            },
+        ]
+    },
+];
+
+const socialLinks: FooterLink[] = [
+    {
+        label: 'Facebook',
+        href: 'https://www.facebook.com/askunicom/'
+    },
+    {
+        label: 'Twitter',
+        href: 'https://twitter.com/askunicom'
+    },
+    {
+        label: 'Instagram',
+        href: 'https://www.instagram.com/askunicom/?hl=tr'
+    },
+    {
+        label: 'LinkedIn',
+        href: 'https://tr.linkedin.com/company/askunicom/'
+    },
+];
+
 const Footer: FunctionComponent = () => {
-    const columns: FooterColumn[] = [
-        {
-            title: 'Navigations',
-            links: [
-                {
-                    label: 'About Us',
-                    href: '/#about'
-                },
-                {
-                    label: 'Programs',
-                    href: '/search'
-                },
-                {
-                    label: 'Universities',
-                    href: '/universities'
-                },
-                {
-                    label: 'Articles',
-                    href: '/articles'
-                },
-                {
-                    label: 'Contact',
-                    href: '/contact'
-                },
-                {
-                    label: 'Fairs',
-                    href: '/fairs'
-                },
-                {
-                    label: 'Become a Partner',
-                    href: '/become-a-partner'
-                }
-            ]
-        },
-        {
-            title: 'For Students',
-            links: [
-                {
-                    label: 'How To Apply',
-                    href: '/how-to-apply'
-                },
-                {
-                    label: 'Candidate Form',
-                    href: '/candidate-form'
-                },
-            ]
-        },
-        {
-            title: 'Legal',
-            links: [
-                {
-                    label: 'Privacy Policy',
-                    href: '/privacy-policy'
-                },
-                {
-                    label: 'Terms and Conditions',
-                    href: '/terms-and-conditions'
-                },
-                {
-                    label: 'Cookie Policy',
-                    href: '/cookie-policy'
-                },
-                {
-                    label: 'Disclaimer',
-                    href: '/disclaimer'
-                },
-            ]
-        },
-    ];
-
-    const socialLinks: FooterLink[] = [
-        {
-            label: 'Facebook',
-            href: 'https://www.facebook.com/askunicom/'
-        },
-        {
-            label: 'Twitter',
-            href: 'https://twitter.com/askunicom'
-        },
-        {
-            label: 'Instagram',
-            href: 'https://www.instagram.com/askunicom/?hl=tr'
-        },
-        {
-            label: 'LinkedIn',
-            href: 'https://tr.linkedin.com/company/askunicom/'
-        },
-    ];
-
     return (
         <footer className="pt-24 pb-7 bg-lightgrey">
             <div className="mx-52 px-3">

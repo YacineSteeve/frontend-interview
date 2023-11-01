@@ -1,8 +1,8 @@
 import type { FunctionComponent, PropsWithChildren } from 'react';
 
-type CardProps = PropsWithChildren<{
+interface CardProps extends PropsWithChildren<{
     orientation: 'horizontal' | 'vertical';
-}>;
+}> {}
 
 const Card: FunctionComponent<CardProps> = ({ orientation, children }) => {
     return (

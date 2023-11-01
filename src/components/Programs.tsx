@@ -4,10 +4,10 @@ import SortBy from '@components/SortBy';
 import SearchBar from '@components/SearchBar';
 import Program from '@components/Program';
 
-type ProgramsProps = {
+interface ProgramsProps {
     params: SearchParams;
     paginatedPrograms: ProgramListResult;
-};
+}
 
 const Programs: FunctionComponent<ProgramsProps> = ({ params, paginatedPrograms }) => {
     const programs = paginatedPrograms.items;

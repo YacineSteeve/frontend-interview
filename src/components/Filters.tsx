@@ -45,9 +45,9 @@ const filters: Filter[] = [
     },
 ];
 
-type FiltersProps = {
+interface FiltersProps {
     params: SearchParams
-};
+}
 
 const Filters: FunctionComponent<FiltersProps> = ({ params }) => {
     return (

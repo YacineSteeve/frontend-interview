@@ -1,9 +1,9 @@
 import type { FunctionComponent, MouseEvent } from 'react';
 
-type CardButtonProps = {
+interface CardButtonProps {
     label: string;
     onClick: () => void;
-};
+}
 
 const CardButton: FunctionComponent<CardButtonProps> = ({ label, onClick }) => {
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {

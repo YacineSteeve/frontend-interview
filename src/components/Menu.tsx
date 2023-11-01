@@ -1,44 +1,40 @@
 import Link from 'next/link';
 import type { FunctionComponent } from 'react';
+import type { Link as MenuLink } from '@/types';
 import Language from '@components/Language';
 
-type MenuLink = {
-    label: string;
-    link: string;
-};
+const menuLinks: MenuLink[] = [
+    {
+        label: 'Universities',
+        href: '/universities',
+    },
+    {
+        label: 'About Us',
+        href: '/#about',
+    },
+    {
+        label: 'How to Apply?',
+        href: '/how-to-apply',
+    },
+    {
+        label: 'Partner',
+        href: '/become-a-partner',
+    },
+    {
+        label: 'Fairs',
+        href: '/fairs',
+    },
+];
 
 const Menu: FunctionComponent = () => {
-    const menuLinks: MenuLink[] = [
-        {
-            label: 'Universities',
-            link: '/universities',
-        },
-        {
-            label: 'About Us',
-            link: '/#about',
-        },
-        {
-            label: 'How to Apply?',
-            link: '/how-to-apply',
-        },
-        {
-            label: 'Partner',
-            link: '/become-a-partner',
-        },
-        {
-            label: 'Fairs',
-            link: '/fairs',
-        },
-    ];
-
     return (
         <nav className="flex h-full">
             <ul className="flex items-center h-full w-full gap-2">
                 {
                     menuLinks.map((menuLink) => (
-                        <li key={menuLink.link}>
+                        <li key={menuLink.href}>
                             <Link
-                                href={menuLink.link}
+                                href={menuLink.href}
                                 className="flex justify-center items-center text-lightblack h-full p-2.5 cursor-pointer">
                                 {menuLink.label}
                             </Link>

@@ -6,10 +6,10 @@ import { useToggleVisibility, useSearchParamUpdate } from '@/hooks';
 import type { Filter, Option } from '@/types';
 import Select from '@components/Select';
 
-type FilterInputProps = {
+interface FilterInputProps {
     filter: Filter;
     initialFilterParams: string[];
-};
+}
 
 const FilterInput: FunctionComponent<FilterInputProps> = ({ filter, initialFilterParams }) => {
     const [filteredOptions, setFilteredOptions] = useState<Option[]>(filter.options);

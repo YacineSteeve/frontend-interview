@@ -8,11 +8,6 @@ import {
     LanguageIcon,
 } from '@components/chip-icon';
 
-type ChipProps = {
-    label: string;
-    type: ChipType;
-};
-
 const chips: Record<ChipType, Chip> = {
     grade: {
         color: 'border-purple-800 text-purple-800',
@@ -35,6 +30,11 @@ const chips: Record<ChipType, Chip> = {
         icon: <FeesIcon />,
     },
 };
+
+interface ChipProps {
+    label: string;
+    type: ChipType;
+}
 
 const Chip: FunctionComponent<ChipProps> = ({ label, type }) => {
     return (

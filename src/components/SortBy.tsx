@@ -11,9 +11,9 @@ const sortOptions: Option[] = [
     {label: 'High to Low', value: '-discounted_price'},
 ];
 
-type SortByProps = {
+interface SortByProps {
     initialOrder: SearchParams['ordering'],
-};
+}
 
 const SortBy: FunctionComponent<SortByProps> = ({ initialOrder }) => {
     const sortOption = sortOptions.find((option) => initialOrder.includes(option.value))

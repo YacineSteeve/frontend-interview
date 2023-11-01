@@ -1,12 +1,12 @@
 import type { FunctionComponent, MouseEvent } from 'react';
 import type { Option } from '@/types';
 
-type SelectProps = {
+interface SelectProps {
     visible: boolean;
     options: Option[];
     selected: Option[]
     onSelect: (option: Option) => void;
-};
+}
 
 const Select: FunctionComponent<SelectProps> = ({ visible, options, selected, onSelect }) => {
     const handleSelect = (option: Option) => (event: MouseEvent<HTMLLIElement>) => {

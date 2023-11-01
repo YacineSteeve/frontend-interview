@@ -4,9 +4,9 @@ import type { FunctionComponent, ChangeEvent } from 'react';
 import { useSearchParamUpdate } from '@/hooks';
 import type { SearchParams } from '@/types';
 
-type SearchBarProps = {
+interface SearchBarProps {
     initialQuery: SearchParams['query'];
-};
+}
 
 const SearchBar: FunctionComponent<SearchBarProps> = ({ initialQuery }) => {
     const updateQueryParam = useSearchParamUpdate('query');
