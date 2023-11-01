@@ -1,62 +1,85 @@
 'use client';
 
 import Image from 'next/image';
+import { Fragment } from 'react';
 import type { FunctionComponent } from 'react';
+import type { Program as ProgramType } from '@/types';
 import Card from '@components/Card';
 import CardButton from '@components/CardButton';
 import Chip from '@components/Chip';
 
 type ProgramProps = {
-    id: number;
+    program: ProgramType
 };
 
-const Program: FunctionComponent<ProgramProps> = () => {
+const Program: FunctionComponent<ProgramProps> = ({ program }) => {
+    const formattedDate = new Date(program.applicationDeadline).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric'
+    });
+
     return (
         <Card orientation="horizontal">
             <Image
-                src="/images/university.png"
-                priority={true}
-                alt={'Ankara Medipol University'}
+                src={`/images/universities/${program.university.picture}`}
+                alt={program.university.name}
                 width={250}
                 height={190}
                 className="ml-3 rounded-2xl border"
             />
             <div className="flex-1">
                 <p className="text-xl text-lightblack mb-1">
-                    Ankara Medipol University
+                    {program.university.name}
                 </p>
                 <p className="mb-5">
-                    Private University
+                    {program.university.type} University
                 </p>
                 <p className="text-lightblack">
-                    Nursing
+                    {program.name}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-2">
-                    <Chip label="English" type="language"/>
-                    <Chip label="2 years" type="duration"/>
-                    <Chip label="Full Time" type="education"/>
-                    <Chip label="Bachelor's" type="grade"/>
+                    <Chip label={program.language} type="language"/>
+                    <Chip label={`${program.duration} years`} type="duration"/>
+                    <Chip label={program.educationType} type="education"/>
+                    <Chip label={program.grade} type="grade"/>
                 </div>
             </div>
             <div className="flex flex-col justify-between items-center w-1/4 pl-4 border-l child:text-center">
-                <p className="line-through">
-                    2500.00 USD
-                </p>
+                {
+                    program.fees.discounted &&
+                        <p className="line-through">
+                            {program.fees.discounted} {program.fees.currency}
+                        </p>
+                }
                 <p className="text-2xl text-blue-400">
-                    2500.00 USD
+                    {program.fees.real} {program.fees.currency}
                 </p>
                 <Chip label="Full Tuition" type="fees"/>
                 <hr className="w-11/12 my-1"/>
-                <p>
-                    Deadline:&nbsp;
-                    <span className="text-red-500">
-                        10/31/2023
-                    </span>
-                </p>
-                <p>
-                    Season: 2023 Fall (February 2023)
-                </p>
-                <CardButton label="APPLY" onClick={() => alert('Successfully applied to Ankara Medipol University !')}/>
+                {
+                    program.partner
+                        ?   <Fragment>
+                            <p>
+                                Deadline:&nbsp;
+                                <span className="text-red-500">
+                                    {formattedDate}
+                                </span>
+                            </p>
+                            <p>
+                                Season: {program.season}
+                            </p>
+                        </Fragment>
+                        :   <p className="text-red-500">
+                                Application Closed
+                        </p>
+                }
+                {
+                    <CardButton
+                        label="APPLY"
+                        onClick={() => alert(`Successfully applied to ${program.university.name} !`)}
+                    />
+                }
             </div>
         </Card>
     );

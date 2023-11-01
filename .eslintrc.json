@@ -26,6 +26,7 @@
     "ignorePatterns": [
         "node_modules/",
         "public/",
-        "dist/"
+        "dist/",
+        "src/database/"
     ]
 }

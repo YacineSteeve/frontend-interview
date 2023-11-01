@@ -26,7 +26,7 @@ const SearchPage: NextPage<SearchPageProps> = ({ searchParams }) => {
             </div>
             <div className="flex gap-6 w-full">
                 <Filters/>
-                <Programs />
+                <Programs params={searchParams} />
             </div>
         </Fragment>
     );
