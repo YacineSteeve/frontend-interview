@@ -1,5 +1,5 @@
 import type { FunctionComponent } from 'react';
-import type { Filter, Option } from '@/types';
+import type { Filter, Option, SearchParams } from '@/types';
 import FilterInput  from '@components/FilterInput';
 import Card from '@components/Card';
 import ClearButton from '@components/ClearButton';
@@ -45,7 +45,11 @@ const filters: Filter[] = [
     },
 ];
 
-const Filters: FunctionComponent = () => {
+type FiltersProps = {
+    params: SearchParams
+};
+
+const Filters: FunctionComponent<FiltersProps> = ({ params }) => {
     return (
         <section className="flex flex-col w-1/4 h-fit">
             <div className="flex h-14">
@@ -55,9 +59,15 @@ const Filters: FunctionComponent = () => {
             </div>
             <Card orientation="vertical">
                 {
-                    filters.map((filter) => (
-                        <FilterInput key={filter.value} filter={filter} />
-                    ))
+                    filters.map((filter) => {
+                        const initialParams = params[filter.value];
+
+                        return <FilterInput
+                            key={filter.value}
+                            filter={filter}
+                            initialFilterParams={initialParams ? initialParams.split(',') : []}
+                        />;
+                    })
                 }
                 <ClearButton />
             </Card>

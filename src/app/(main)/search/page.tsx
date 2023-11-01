@@ -16,7 +16,7 @@ const SearchPage: NextPage<SearchPageProps> = ({ searchParams }) => {
     };
 
     if (!searchParams.limit || !searchParams.ordering) {
-        redirect('/search?' + new URLSearchParams(defaultSearchParams).toString());
+        redirect('/search/?' + new URLSearchParams(defaultSearchParams).toString());
     }
 
     return (
@@ -25,7 +25,7 @@ const SearchPage: NextPage<SearchPageProps> = ({ searchParams }) => {
                 Find Your Dream Programs
             </div>
             <div className="flex gap-6 w-full">
-                <Filters/>
+                <Filters params={searchParams}/>
                 <Programs params={searchParams} />
             </div>
         </Fragment>

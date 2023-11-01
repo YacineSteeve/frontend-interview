@@ -1,17 +1,18 @@
 'use client';
 
-import { useState } from 'react';
 import type { FunctionComponent, ChangeEvent } from 'react';
 import { useSearchParamUpdate } from '@/hooks';
 import type { SearchParams } from '@/types';
 
-const SearchBar: FunctionComponent = () => {
-    const [initialParam, setSearchParam] = useSearchParamUpdate('query');
-    const [searchQuery, setSearchQuery] = useState<SearchParams['query']>(initialParam[0]);
+type SearchBarProps = {
+    initialQuery: SearchParams['query'];
+};
+
+const SearchBar: FunctionComponent<SearchBarProps> = ({ initialQuery }) => {
+    const updateQueryParam = useSearchParamUpdate('query');
 
     const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
-        setSearchQuery(event.target.value);
-        setSearchParam([event.target.value]);
+        updateQueryParam([event.target.value]);
     };
 
     return (
@@ -19,14 +20,14 @@ const SearchBar: FunctionComponent = () => {
             <input
                 id="search-program"
                 type="search"
-                value={searchQuery}
+                value={initialQuery}
                 onChange={handleSearchInput}
                 className="peer w-full h-14 pl-4 pr-12 text-lightblack rounded-2xl border-1 border-gray-200 outline outline-1 outline-gray-300 hover:outline-black focus:outline-2 focus:outline-blue-500"
             />
             <label
                 htmlFor="search-program"
                 className={`absolute left-4 flex items-center p-1 h-1/2 bg-white peer-focus:bg-snow peer-focus:text-blue-500 ${
-                    searchQuery === ''
+                    initialQuery === ''
                         ? 'top-1/4 peer-focus:text-sm peer-focus:-top-1/4'
                         : 'text-sm -top-1/4'
                 }`}

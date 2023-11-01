@@ -8,20 +8,18 @@ import Select from '@components/Select';
 
 type FilterInputProps = {
     filter: Filter;
+    initialFilterParams: string[];
 };
 
-const FilterInput: FunctionComponent<FilterInputProps> = ({ filter }) => {
+const FilterInput: FunctionComponent<FilterInputProps> = ({ filter, initialFilterParams }) => {
     const [filteredOptions, setFilteredOptions] = useState<Option[]>(filter.options);
     const [optionSearch, setOptionSearch] = useState<string>('');
-    const [initialSearchParam, setSearchParam] = useSearchParamUpdate(filter.value);
-    const [selectedOptions, setSelectedOptions] = useState<Option[]>(
-        filter.options.filter((option) => initialSearchParam.includes(option.value))
-    );
+    const updateSearchParam = useSearchParamUpdate(filter.value);
+    const selectedOptions = filter.options.filter((option) => initialFilterParams.includes(option.value));
     const { ref, isVisible, setIsVisible } = useToggleVisibility<HTMLDivElement>(false);
 
-    const updateSearchParam = (selectedOptions: Option[]) => {
-        setSelectedOptions(selectedOptions);
-        setSearchParam(selectedOptions.map((option) => option.value));
+    const update = (selectedOptions: Option[]) => {
+        updateSearchParam(selectedOptions.map((option) => option.value));
     };
 
     const selectFilter = (option: Option) => {
@@ -33,15 +31,15 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ filter }) => {
             return;
         }
 
-        updateSearchParam([...selectedOptions, option]);
+        update([...selectedOptions, option]);
     };
 
     const removeFilter = (option: Option) => {
-        updateSearchParam(selectedOptions.filter((selected) => selected.value !== option.value));
+        update(selectedOptions.filter((selected) => selected.value !== option.value));
     };
 
     const clearFilters = () => {
-        updateSearchParam([]);
+        update([]);
     };
 
     const handleOptionSearch = (event: ChangeEvent<HTMLInputElement>) => {

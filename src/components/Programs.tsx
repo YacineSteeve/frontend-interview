@@ -19,10 +19,10 @@ const Programs: FunctionComponent<ProgramsProps> = async ({ params }) => {
                 <p className="text-md">
                     We found {programs.length} program{programs.length > 1 && 's'} for you
                 </p>
-                <SortBy />
+                <SortBy initialOrder={params.ordering}/>
             </div>
             <div className="flex flex-col gap-6">
-                <SearchBar />
+                <SearchBar initialQuery={params.query}/>
                 {
                     programs.length > 0 &&
                         programs.map((program, index) => (

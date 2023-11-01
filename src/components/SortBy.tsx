@@ -1,24 +1,29 @@
 'use client';
 
-import { useState } from 'react';
 import type { FunctionComponent } from 'react';
-import type { Option } from '@/types';
-import { useToggleVisibility } from '@/hooks';
+import type { Option,SearchParams } from '@/types';
+import { useToggleVisibility, useSearchParamUpdate } from '@/hooks';
 import Select from '@components/Select';
 
-const SortBy: FunctionComponent = () => {
-    const sortOptions: Option[] = [
-        { label: 'Featured', value: 'featured' },
-        { label: 'Low to High', value: 'low-to-high' },
-        { label: 'High to Low', value: 'high-to-low' },
-    ];
+const sortOptions: Option[] = [
+    {label: 'Featured', value: 'rank'},
+    {label: 'Low to High', value: 'discounted_price'},
+    {label: 'High to Low', value: '-discounted_price'},
+];
 
-    const [sort, setSort] = useState<Option>(sortOptions[0] as Option);
+type SortByProps = {
+    initialOrder: SearchParams['ordering'],
+};
+
+const SortBy: FunctionComponent<SortByProps> = ({ initialOrder }) => {
+    const sortOption = sortOptions.find((option) => initialOrder.includes(option.value))
+        || sortOptions[0] as Option;
+    const updateSortParam = useSearchParamUpdate('ordering');
     const { ref, isVisible, setIsVisible } = useToggleVisibility<HTMLButtonElement>(false);
 
     const chooseSort = (option: Option) => {
-        setSort(option);
         setIsVisible(false);
+        updateSortParam(['-can_apply', option.value]);
     };
 
     return (
@@ -27,7 +32,7 @@ const SortBy: FunctionComponent = () => {
             onClick={() => setIsVisible((prevIsVisible) => !prevIsVisible)}
             className="relative flex justify-evenly w-fit text-lightblack p-1.5 pl-4 rounded-2xl border-1 border-gray-200 outline outline-1 outline-gray-300 hover:outline-black focus:outline-2 focus:outline-blue-700"
         >
-            {sort.label}
+            {sortOption.label}
             <svg
                 className="text-xs text-gray-500"
                 focusable="false"
@@ -43,7 +48,7 @@ const SortBy: FunctionComponent = () => {
             <Select
                 visible={isVisible}
                 options={sortOptions}
-                selected={[sort]}
+                selected={[sortOption]}
                 onSelect={chooseSort}
             />
         </button>

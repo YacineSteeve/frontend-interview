@@ -49,11 +49,11 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                 {
                     program.fees.discounted &&
                         <p className="line-through">
-                            {program.fees.discounted} {program.fees.currency}
+                            {program.fees.real} {program.fees.currency}
                         </p>
                 }
                 <p className="text-2xl text-blue-400">
-                    {program.fees.real} {program.fees.currency}
+                    {program.fees.discounted || program.fees.real} {program.fees.currency}
                 </p>
                 <Chip label="Full Tuition" type="fees"/>
                 <hr className="w-11/12 my-1"/>
