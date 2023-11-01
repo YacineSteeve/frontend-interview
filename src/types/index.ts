@@ -1,5 +1,12 @@
 import type { ReactNode } from 'react';
 import type { ListResult, RecordModel } from 'pocketbase';
+import {
+    countries,
+    universityTypes,
+    campusTypes,
+    educationTypes,
+    grades
+} from '@/utils/contants';
 
 export type Link = {
     label: string;
@@ -46,17 +53,15 @@ export type Program = {
     partner: boolean;
     applicationDeadline: Date | null;
     season: string | null;
-    campus: 'On' | 'Off';
-    educationType: 'Full time' | 'Evening Period' | 'Online';
-    grade: 'Associate degree' | 'Bachelor degree' | 'Master Non-Thesis' | 'Master With-Thesis' | 'Phd degree';
-    language:
-        | 'Turkish' | 'English' | 'Russian' | 'Arabic' | 'Spanish' | 'French' | 'German' | 'Chinese'
-        | '30% English 70% Turkish' | '50% English 50% Turkish' | '30% Arabic 70% Turkish' | '30% German 70% Turkish';
+    campus: (typeof campusTypes)[number];
+    educationType: (typeof educationTypes)[number];
+    grade: (typeof grades)[number];
+    language: (typeof countries)[number];
     university: {
         name: string;
         picture: string;
-        type: 'Private' | 'State';
-        country: 'India' | 'Turkey' | 'Malaysia' | 'Ukraine' | 'Northern Cyprus' | 'Bosnia and Herzegovina';
+        type: (typeof universityTypes)[number];
+        country: (typeof countries)[number];
     };
     fees: {
         real: number;

@@ -2,8 +2,8 @@
 
 import type { SearchParams, ProgramListResult, ResultItem, Program } from '@/types';
 import databaseClient from '@/database/client';
-import createSortString from '@/lib/create-sort-string';
-//import createFilterString from './lib/create-filter-string';
+import createSortString from '@/utils/create-sort-string';
+import createFilterString from '@/utils/create-filter-string';
 
 const uselessFields = ['collectionId', 'collectionName', 'created', 'updated', 'id'] as const;
 
@@ -15,11 +15,12 @@ const hasExpand = (item: ProgramItem): item is ProgramItem & { expand: Record<st
 
 export async function fetchPrograms(params: SearchParams): Promise<ProgramListResult> {
     const perPage = parseInt(params.limit || '10');
+    const page = 1 + (parseInt(params.offset || '0') / perPage);
 
-    const data = await databaseClient.collection('programs').getList<ProgramItem>(1, perPage, {
+    const data = await databaseClient.collection('programs').getList<ProgramItem>(page, perPage, {
         expand: 'fees,university',
         sort: createSortString(params.ordering),
-        //filter: createFilterString(searchParams),
+        filter: createFilterString(params),
     });
 
     data.items = data.items.map((item: ProgramItem) => {

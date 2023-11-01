@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import {Fragment, Suspense} from 'react';
 import type { NextPage } from 'next';
 import { redirect } from 'next/navigation';
 import { fetchPrograms } from './actions';
@@ -12,7 +12,7 @@ interface SearchPageProps {
 
 const SearchPage: NextPage<SearchPageProps> = async ({ searchParams }) => {
     const defaultSearchParams: SearchParams = {
-        limit: '10',
+        limit: '2',
         ordering: '-can_apply,rank',
     };
 
@@ -29,7 +29,9 @@ const SearchPage: NextPage<SearchPageProps> = async ({ searchParams }) => {
             </div>
             <div className="flex gap-6 w-full">
                 <Filters params={searchParams}/>
-                <Programs params={searchParams} paginatedPrograms={programs}/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Programs params={searchParams} paginatedPrograms={programs}/>
+                </Suspense>
             </div>
         </Fragment>
     );

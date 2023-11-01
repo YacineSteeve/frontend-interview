@@ -11,12 +11,13 @@ interface ProgramsProps {
 
 const Programs: FunctionComponent<ProgramsProps> = ({ params, paginatedPrograms }) => {
     const programs = paginatedPrograms.items;
+    const totalNumberOfPrograms = paginatedPrograms.totalItems;
 
     return (
         <section className="flex flex-col w-3/4">
             <div className="flex justify-between items-start h-14">
                 <p className="text-md">
-                    We found {programs.length} program{programs.length > 1 && 's'} for you
+                    We found {totalNumberOfPrograms} program{totalNumberOfPrograms > 1 && 's'} for you
                 </p>
                 <SortBy initialOrder={params.ordering}/>
             </div>

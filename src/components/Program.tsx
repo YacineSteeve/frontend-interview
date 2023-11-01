@@ -26,7 +26,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                 alt={program.university.name}
                 width={250}
                 height={190}
-                className="ml-3 rounded-2xl border"
+                className="ml-3 max-h-48 rounded-2xl"
             />
             <div className="flex-1">
                 <p className="text-xl text-lightblack mb-1">
@@ -45,9 +45,9 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                     <Chip label={program.grade} type="grade"/>
                 </div>
             </div>
-            <div className="flex flex-col justify-between items-center w-1/4 pl-4 border-l child:text-center">
+            <div className="flex flex-col justify-start items-center w-1/4 pl-4 border-l child:text-center">
                 {
-                    program.fees.discounted &&
+                    program.fees.discounted !== 0 &&
                         <p className="line-through">
                             {program.fees.real} {program.fees.currency}
                         </p>
@@ -69,16 +69,14 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                             <p>
                                 Season: {program.season}
                             </p>
+                            <CardButton
+                                label="APPLY"
+                                onClick={() => alert(`Successfully applied to ${program.university.name} !`)}
+                            />
                         </Fragment>
-                        :   <p className="text-red-500">
-                                Application Closed
+                        :   <p className="text-center text-sm">
+                                This program is not available
                         </p>
-                }
-                {
-                    <CardButton
-                        label="APPLY"
-                        onClick={() => alert(`Successfully applied to ${program.university.name} !`)}
-                    />
                 }
             </div>
         </Card>

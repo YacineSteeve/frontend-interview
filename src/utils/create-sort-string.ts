@@ -3,8 +3,8 @@ import type { SearchParams } from '@/types';
 const orderingMap = {
     '-can_apply': '-partner',
     'rank': 'name',
-    'discounted_price': 'fees.discounted',
-    '-discounted_price': '-fees.discounted',
+    'discounted_price': 'fees.real',
+    '-discounted_price': '-fees.real',
 } as const;
 
 type OrderingMapKey = keyof typeof orderingMap;

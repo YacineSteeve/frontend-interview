@@ -1,47 +1,48 @@
 import type { FunctionComponent } from 'react';
-import type { Filter, Option, SearchParams } from '@/types';
+import type { Filter, SearchParams } from '@/types';
+import {
+    countries,
+    universityTypes,
+    grades,
+    educationTypes,
+    campusTypes,
+    languages,
+} from '@/utils/contants';
+import { buildFilterOptions } from '@/utils/build-filter-options';
 import FilterInput  from '@components/FilterInput';
 import Card from '@components/Card';
 import ClearButton from '@components/ClearButton';
-
-const countries: Option[] = [
-    {value: 'United States', label: 'United States'},
-    {value: 'Turkey', label: 'Turkey'},
-    {value: 'United Kingdom', label: 'United Kingdom'},
-    {value: 'Canada', label: 'Canada'},
-    {value: 'Australia', label: 'Australia'},
-];
 
 const filters: Filter[] = [
     {
         label: 'Country',
         value: 'country',
-        options: countries
+        options: buildFilterOptions(countries)
     },
     {
         label: 'University Type',
         value: 'providerType',
-        options: countries
+        options: buildFilterOptions(universityTypes)
     },
     {
         label: 'Grade Type',
         value: 'gradeType',
-        options: countries
+        options: buildFilterOptions(grades)
     },
     {
         label: 'Education Type',
         value: 'educationType',
-        options: countries
+        options: buildFilterOptions(educationTypes)
     },
     {
         label: 'Campus Type',
         value: 'campusType',
-        options: countries
+        options: buildFilterOptions(campusTypes)
     },
     {
         label: 'Education Language',
         value: 'educationLanguage',
-        options: countries
+        options: buildFilterOptions(languages)
     },
 ];
 
