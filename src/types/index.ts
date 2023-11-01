@@ -38,9 +38,9 @@ export type Chip = {
 export type Program = {
     name: string;
     duration: number;
-    applicationDeadline: Date;
-    season: string;
     partner: boolean;
+    applicationDeadline: Date | null;
+    season: string | null;
     campus: 'On' | 'Off';
     educationType: 'Full time' | 'Evening Period' | 'Online';
     grade: 'Associate degree' | 'Bachelor degree' | 'Master Non-Thesis' | 'Master With-Thesis' | 'Phd degree';
@@ -56,11 +56,11 @@ export type Program = {
     fees: {
         real: number;
         discounted: number | null;
-        currency: 'TRY' | 'USD';
+        currency: 'TRY' | 'USD' | 'EUR';
         type: 'Yearly' | 'Full Tuition';
     };
 };
 
 export type ProgramListResult = ListResult<Program>;
 
-export type ResultItem = RecordModel;
+export type ResultItem<T> = RecordModel & T;

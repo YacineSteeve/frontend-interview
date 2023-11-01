@@ -13,11 +13,11 @@ type ProgramProps = {
 };
 
 const Program: FunctionComponent<ProgramProps> = ({ program }) => {
-    const formattedDate = new Date(program.applicationDeadline).toLocaleDateString('en-US', {
+    const formattedDate = program.applicationDeadline ? new Date(program.applicationDeadline).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric'
-    });
+    }) : 'N/A';
 
     return (
         <Card orientation="horizontal">

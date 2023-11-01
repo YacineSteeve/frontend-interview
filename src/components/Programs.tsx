@@ -1,16 +1,15 @@
 import type { FunctionComponent } from 'react';
-import type { SearchParams } from '@/types';
-import { useFetch } from '@/hooks';
+import type { SearchParams, ProgramListResult } from '@/types';
 import SortBy from '@components/SortBy';
 import SearchBar from '@components/SearchBar';
 import Program from '@components/Program';
 
 type ProgramsProps = {
-    params: SearchParams
+    params: SearchParams;
+    paginatedPrograms: ProgramListResult;
 };
 
-const Programs: FunctionComponent<ProgramsProps> = async ({ params }) => {
-    const paginatedPrograms = await useFetch(params);
+const Programs: FunctionComponent<ProgramsProps> = ({ params, paginatedPrograms }) => {
     const programs = paginatedPrograms.items;
 
     return (

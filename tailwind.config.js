@@ -8,19 +8,19 @@ module.exports = {
             keyframes: {
                 bounceTopLeft: {
                     '0%, 100%': { transform: 'translate(0%, 0%)' },
-                    '50%': { transform: 'translate(50%, 50%)' },
+                    '50%': { transform: 'translate(75%, 75%)' },
                 },
                 bounceTopRight: {
                     '0%, 100%': { transform: 'translate(0%, 0%)' },
-                    '50%': { transform: 'translate(-50%, 50%)' },
+                    '50%': { transform: 'translate(-75%, 75%)' },
                 },
                 bounceBottomLeft: {
                     '0%, 100%': { transform: 'translate(0%, 0%)' },
-                    '50%': { transform: 'translate(50%, -50%)' },
+                    '50%': { transform: 'translate(75%, -75%)' },
                 },
                 bounceBottomRight: {
                     '0%, 100%': { transform: 'translate(0%, 0%)' },
-                    '50%': { transform: 'translate(-50%, -50%)' },
+                    '50%': { transform: 'translate(-75%, -75%)' },
                 },
             },
             animation: {
