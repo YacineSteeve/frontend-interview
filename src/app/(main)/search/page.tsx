@@ -1,11 +1,17 @@
-import { Fragment, Suspense} from 'react';
-import type { NextPage } from 'next';
+import { Fragment } from 'react';
+import type { NextPage, Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { fetchPrograms } from './actions';
 import { defaultSearchParams } from '@/utils/contants';
 import type { SearchParams } from '@/types';
-import Filters from '@components/Filters';
-import Programs from '@components/Programs';
+import { Filters, Programs } from './_components';
+
+export function generateMetadata(): Metadata {
+    return {
+        title: 'Askuni | Find Your Dream Programs',
+        description: 'Find your dream programs for better future.',
+    };
+}
 
 interface SearchPageProps {
     searchParams: SearchParams
@@ -25,9 +31,7 @@ const SearchPage: NextPage<SearchPageProps> = async ({ searchParams }) => {
             </div>
             <div className="flex gap-6 w-full">
                 <Filters params={searchParams}/>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Programs params={searchParams} paginatedPrograms={programs}/>
-                </Suspense>
+                <Programs params={searchParams} paginatedPrograms={programs}/>
             </div>
         </Fragment>
     );

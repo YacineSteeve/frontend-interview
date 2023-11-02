@@ -10,9 +10,8 @@ import {
     feesTypes,
 } from '@/utils/contants';
 import { buildFilterOptions } from '@/utils/build-filter-options';
-import FilterInput  from '@components/FilterInput';
-import Card from '@components/Card';
-import ClearButton from '@components/ClearButton';
+import FilterInput  from './FilterInput';
+import ClearButton from './ClearButton';
 
 const filters: Filter[] = [
     {
@@ -22,32 +21,32 @@ const filters: Filter[] = [
     },
     {
         label: 'University Type',
-        value: 'providerType',
+        value: 'provider_type',
         options: buildFilterOptions(universityTypes)
     },
     {
         label: 'Grade Type',
-        value: 'gradeType',
+        value: 'grade_type',
         options: buildFilterOptions(grades)
     },
     {
         label: 'Education Type',
-        value: 'educationType',
+        value: 'education_type',
         options: buildFilterOptions(educationTypes)
     },
     {
         label: 'Campus Type',
-        value: 'campusType',
+        value: 'campus_type',
         options: buildFilterOptions(campusTypes)
     },
     {
         label: 'Education Language',
-        value: 'educationLanguage',
+        value: 'education_language',
         options: buildFilterOptions(languages)
     },
     {
         label: 'Fees Type',
-        value: 'feesType',
+        value: 'fees_type',
         options: buildFilterOptions(feesTypes)
     },
 ];
@@ -64,7 +63,7 @@ const Filters: FunctionComponent<FiltersProps> = ({ params }) => {
                     Filters
                 </p>
             </div>
-            <Card orientation="vertical">
+            <div className="flex p-5 w-full h-fit bg-white shadow-lg rounded-2xl border border-gray-300 flex-col gap-4 animate-translate-to-right">
                 {
                     filters.map((filter) => {
                         const initialParams = params[filter.value];
@@ -77,7 +76,7 @@ const Filters: FunctionComponent<FiltersProps> = ({ params }) => {
                     })
                 }
                 <ClearButton />
-            </Card>
+            </div>
         </section>
     );
 };

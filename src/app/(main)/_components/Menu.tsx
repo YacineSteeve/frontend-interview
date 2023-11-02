@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { FunctionComponent } from 'react';
 import type { Link as MenuLink } from '@/types';
-import Language from '@components/Language';
+import Language from './Language';
 
 const menuLinks: MenuLink[] = [
     {
@@ -44,7 +44,7 @@ const Menu: FunctionComponent = () => {
                 <li>
                     <Link
                         href="/register"
-                        className="flex justify-center items-center ml-2 py-2 px-8 text-white bg-blue-500 outline rounded-md cursor-pointer hover:outline-1 hover:outline-blue-500 hover:bg-white hover:text-blue-500">
+                        className="flex justify-center items-center ml-2 py-2 px-8 text-white bg-skyblue outline rounded-md cursor-pointer hover:outline-1 hover:outline-blue-500 hover:bg-white hover:text-blue-500">
                         Sign Up
                     </Link>
                 </li>

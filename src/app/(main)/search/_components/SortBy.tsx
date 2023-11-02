@@ -3,7 +3,7 @@
 import type { FunctionComponent } from 'react';
 import type { Option,SearchParams } from '@/types';
 import { useToggleVisibility, useSearchParamUpdate } from '@/hooks';
-import Select from '@components/Select';
+import Select from '@/components/Select';
 
 const sortOptions: Option[] = [
     {label: 'Featured', value: 'rank'},

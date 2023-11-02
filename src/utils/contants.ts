@@ -1,5 +1,5 @@
 export const defaultSearchParams = {
-    limit: '3',
+    limit: '2',
     ordering: '-can_apply,rank',
 };
 

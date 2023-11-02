@@ -6,15 +6,27 @@ import {
     educationTypes,
     campusTypes,
     languages,
+    feesTypes,
 } from '@/utils/contants';
 
 const paramFiltersMap: Record<OptionalFilter, readonly string[]> = {
-    country: countries,
-    providerType: universityTypes,
-    gradeType: grades,
-    educationType: educationTypes,
-    campusType: campusTypes,
-    educationLanguage: languages,
+    'country': countries,
+    'provider_type': universityTypes,
+    'grade_type': grades,
+    'education_type': educationTypes,
+    'campus_type': campusTypes,
+    'education_language': languages,
+    'fees_type': feesTypes,
+};
+
+const fieldsFilterMap: Record<OptionalFilter, string> = {
+    'country': 'university.country',
+    'provider_type': 'university.type',
+    'grade_type': 'grade',
+    'education_type': 'educationType',
+    'campus_type': 'campus',
+    'education_language': 'language',
+    'fees_type': 'fees.type',
 };
 
 const fieldsQueryLookup = [
@@ -28,15 +40,6 @@ const fieldsQueryLookup = [
     'university.type',
     'fees.type',
 ];
-
-const fieldsFilterMap: Record<OptionalFilter, string> = {
-    country: 'university.country',
-    providerType: 'university.type',
-    gradeType: 'grade',
-    educationType: 'educationType',
-    campusType: 'campus',
-    educationLanguage: 'language',
-};
 
 const createFilter = (params: SearchParams, filter: OptionalFilter): string => {
     const indices = params[filter];

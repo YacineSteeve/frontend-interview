@@ -3,7 +3,7 @@
 import type {FunctionComponent} from 'react';
 import type { Option } from '@/types';
 import { useToggleVisibility } from '@/hooks';
-import Select from '@components/Select';
+import Select from '@/components/Select';
 
 const Language: FunctionComponent = () => {
     const languages: Option[] = [

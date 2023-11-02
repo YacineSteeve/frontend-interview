@@ -10,13 +10,12 @@ interface PaginationProps {
     step: number;
 }
 
-const Pagination: FunctionComponent<PaginationProps> = ({ currentPage, step }) => {
-    const totalPages = 10;
+const Pagination: FunctionComponent<PaginationProps> = ({ currentPage, totalPages, step }) => {
     const updateOffset = useSearchParamUpdate('offset');
 
     const handlePageChange = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        updateOffset([`${(parseInt(event.target.textContent) - 1) * step}`]);
+        updateOffset([`${(parseInt((event.target as HTMLButtonElement).value) - 1) * step}`]);
     };
 
     const handlePreviousPage = (event: MouseEvent<HTMLButtonElement>) => {
@@ -56,20 +55,26 @@ const Pagination: FunctionComponent<PaginationProps> = ({ currentPage, step }) =
                                 <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
                             </svg>
                         </button>
-                        <button onClick={handlePageChange}>1</button>
+                        <button onClick={handlePageChange} value={1}>1</button>
                     </Fragment>
             }
             {
-                currentPage > 2 && <span>...</span>
+                currentPage > 3 && <span>...</span>
             }
-            <button className="border" onClick={handlePageChange}>{currentPage}</button>
             {
-                currentPage < totalPages - 1 && <span>...</span>
+                currentPage > 2 && <button onClick={handlePageChange} value={currentPage - 1}>{currentPage - 1}</button>
+            }
+            <button className="border" onClick={handlePageChange} value={currentPage}>{currentPage}</button>
+            {
+                currentPage < totalPages - 1 && <button onClick={handlePageChange} value={currentPage + 1}>{currentPage + 1}</button>
+            }
+            {
+                currentPage < totalPages - 2 && <span>...</span>
             }
             {
                 currentPage < totalPages &&
                     <Fragment>
-                        <button onClick={handlePageChange}>{totalPages}</button>
+                        <button onClick={handlePageChange} value={totalPages}>{totalPages}</button>
                         <button onClick={handleNextPage}>
                             <svg
                                 className="h-5 w-5"

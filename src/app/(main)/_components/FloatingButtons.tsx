@@ -2,22 +2,13 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import type { FunctionComponent } from 'react';
 import { FloatingWhatsApp } from 'react-floating-whatsapp';
+import { useScrolledDown } from '@/hooks';
 
-const Floating: FunctionComponent = () => {
-    const [showScrollToTop, setShowScrollToTop] = useState(false);
-
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            setShowScrollToTop(window.scrollY > 150);
-        });
-
-        return () => {
-            window.removeEventListener('scroll', () => {});
-        };
-    }, []);
+const FloatingButtons: FunctionComponent = () => {
+    const showScrollToTop = useScrolledDown(150);
 
     return (
         <Fragment>
@@ -43,4 +34,4 @@ const Floating: FunctionComponent = () => {
     );
 };
 
-export default Floating;
+export default FloatingButtons;

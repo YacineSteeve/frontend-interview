@@ -39,15 +39,6 @@
             "@/*": [
                 "./src/*"
             ],
-            "@public/*": [
-                "./public/*"
-            ],
-            "@components/*": [
-                "./src/components/*"
-            ],
-            "@styles/*": [
-                "./src/styles/*"
-            ]
         },
         "plugins": [
             {

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import type { FunctionComponent, ChangeEvent } from 'react';
 import { useToggleVisibility, useSearchParamUpdate } from '@/hooks';
 import type { Filter, Option } from '@/types';
-import Select from '@components/Select';
+import Select from '@/components/Select';
 
 interface FilterInputProps {
     filter: Filter;

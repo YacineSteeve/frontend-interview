@@ -4,9 +4,8 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import type { FunctionComponent } from 'react';
 import type { Program as ProgramType } from '@/types';
-import Card from '@components/Card';
-import CardButton from '@components/CardButton';
-import Chip from '@components/Chip';
+import CardButton from './CardButton';
+import Chip from './Chip';
 
 interface ProgramProps {
     program: ProgramType
@@ -20,13 +19,13 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
     }) : 'N/A';
 
     return (
-        <Card orientation="horizontal">
+        <div className="flex p-5 w-full h-fit bg-white shadow-lg rounded-2xl border border-gray-300 flex-row gap-8">
             <Image
                 src={`/images/universities/${program.university.picture}`}
                 alt={program.university.name}
                 width={250}
                 height={190}
-                className="ml-3 max-h-48 rounded-2xl"
+                className="ml-3 w-auto h-auto min-w-[250px] min-h-[190px] rounded-2xl"
             />
             <div className="flex-1">
                 <p className="text-xl text-lightblack mb-1">
@@ -52,7 +51,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                             {program.fees.real} {program.fees.currency}
                         </p>
                 }
-                <p className="text-2xl text-blue-400">
+                <p className="text-2xl text-info">
                     {program.fees.discounted || program.fees.real} {program.fees.currency}
                 </p>
                 <Chip label="Full Tuition" type="fees"/>
@@ -79,7 +78,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                         </p>
                 }
             </div>
-        </Card>
+        </div>
     );
 };
 

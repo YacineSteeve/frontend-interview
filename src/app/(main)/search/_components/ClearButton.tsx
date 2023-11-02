@@ -2,7 +2,7 @@
 
 import type { FunctionComponent } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import CardButton from '@components/CardButton';
+import CardButton from './CardButton';
 
 const ClearButton: FunctionComponent = () => {
     const router = useRouter();

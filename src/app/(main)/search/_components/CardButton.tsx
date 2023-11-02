@@ -14,7 +14,7 @@ const CardButton: FunctionComponent<CardButtonProps> = ({ label, onClick }) => {
     return (
         <button
             onClick={handleClick}
-            className="w-full text-white text-sm py-2 rounded-2xl bg-blue-600 hover:bg-blue-700"
+            className="w-full text-white text-sm py-2 rounded-2xl bg-lightblue hover:bg-darkblue"
         >
             {label}
         </button>

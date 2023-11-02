@@ -21,12 +21,12 @@ export type Option = {
 
 export type OptionalFilter =
     | 'country'
-    | 'providerType'
-    | 'gradeType'
-    | 'educationType'
-    | 'campusType'
-    | 'educationLanguage'
-    | 'feesType';
+    | 'provider_type'
+    | 'grade_type'
+    | 'education_type'
+    | 'campus_type'
+    | 'education_language'
+    | 'fees_type';
 
 export type Filter = {
     label: string;

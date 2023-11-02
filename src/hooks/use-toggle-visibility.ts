@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect, useRef } from 'react';
 
 export function useToggleVisibility<T extends HTMLElement>(initialIsVisible: boolean) {
@@ -14,6 +12,7 @@ export function useToggleVisibility<T extends HTMLElement>(initialIsVisible: boo
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside, true);
+
         return () => {
             document.removeEventListener('click', handleClickOutside, true);
         };
