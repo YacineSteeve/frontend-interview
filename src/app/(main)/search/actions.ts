@@ -15,6 +15,7 @@ const hasExpand = (item: ProgramItem): item is ProgramItem & { expand: Record<st
 };
 
 export async function fetchPrograms(params: SearchParams): Promise<ProgramListResult> {
+    console.log('fetchPrograms', params);
     const perPage = parseInt(params.limit || defaultSearchParams.limit);
     const page = 1 + (parseInt(params.offset || '0') / perPage);
 

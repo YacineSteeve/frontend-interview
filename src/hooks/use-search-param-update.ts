@@ -7,7 +7,7 @@ export function useSearchParamUpdate<T extends keyof SearchParams>(paramName: T)
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    return useCallback(async (value: SearchParams[T][]) => {
+    return useCallback((value: SearchParams[T][]) => {
         const newParams = new URLSearchParams(searchParams);
         const stringValue = (value || []).toString();
 

@@ -1,6 +1,9 @@
-import { Fragment, Suspense } from 'react';
+'use client';
+
+import { useEffect, useState, Fragment, Suspense } from 'react';
 import type { FunctionComponent } from 'react';
 import type { SearchParams, ProgramListResult } from '@/types';
+import { fetchPrograms } from '../actions';
 import { defaultSearchParams } from '@/utils/contants';
 import SortBy from './SortBy';
 import SearchBar from './SearchBar';
@@ -9,8 +12,7 @@ import ProgramSkeleton from './ProgramSkeleton';
 import Pagination from './Pagination';
 
 interface ProgramsProps {
-    params: SearchParams;
-    paginatedPrograms: ProgramListResult;
+    paramsString: string;
 }
 
 const NumberOfProgramsSkeleton: FunctionComponent = () => <Fragment>O program</Fragment>;
@@ -27,7 +29,23 @@ const ProgramsSkeleton: FunctionComponent = () => {
     );
 };
 
-const Programs: FunctionComponent<ProgramsProps> = ({ params, paginatedPrograms }) => {
+const Programs: FunctionComponent<ProgramsProps> = ({ paramsString }) => {
+    const params: SearchParams = JSON.parse(paramsString);
+
+    const [paginatedPrograms, setPaginatedPrograms] = useState<ProgramListResult>({
+        page: 1,
+        perPage: parseInt(params.limit),
+        totalPages: 1,
+        totalItems: 0,
+        items: [],
+    });
+
+    useEffect(() => {
+        (async () => {
+            setPaginatedPrograms(await fetchPrograms(JSON.parse(paramsString)));
+        })();
+    }, [paramsString]);
+
     const programs = paginatedPrograms.items;
     const totalNumberOfPrograms = paginatedPrograms.totalItems;
 
