@@ -5,8 +5,6 @@ import type { FunctionComponent } from 'react';
 import type { SearchParams, ProgramListResult } from '@/types';
 import { fetchPrograms } from '../actions';
 import { defaultSearchParams } from '@/utils/contants';
-import SortBy from './SortBy';
-import SearchBar from './SearchBar';
 import Program from './Program';
 import ProgramSkeleton from './ProgramSkeleton';
 import Pagination from './Pagination';
@@ -50,19 +48,15 @@ const Programs: FunctionComponent<ProgramsProps> = ({ paramsString }) => {
     const totalNumberOfPrograms = paginatedPrograms.totalItems;
 
     return (
-        <section className="flex flex-col w-3/4">
-            <div className="flex justify-between items-start h-14">
-                <p className="text-md">
-                    We found&nbsp;
-                    <Suspense fallback={<NumberOfProgramsSkeleton/>}>
-                        {totalNumberOfPrograms} program{totalNumberOfPrograms > 1 && 's'}
-                    </Suspense>&nbsp;
-                    for you
-                </p>
-                <SortBy initialOrder={params.ordering}/>
-            </div>
-            <div className="flex flex-col gap-6 animate-translate-to-left">
-                <SearchBar initialQuery={params.query}/>
+        <Fragment>
+            <p className="absolute top-0 left-0 text-md">
+                We found&nbsp;
+                <Suspense fallback={<NumberOfProgramsSkeleton/>}>
+                    {totalNumberOfPrograms} program{totalNumberOfPrograms > 1 && 's'}
+                </Suspense>&nbsp;
+                for you
+            </p>
+            <div className="flex flex-col gap-6 mt-6 animate-translate-to-left">
                 <Suspense fallback={<ProgramsSkeleton/>}>
                     {
                         programs.length > 0 &&
@@ -77,7 +71,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ paramsString }) => {
                     step={parseInt(params.limit || defaultSearchParams.limit)}
                 />
             </div>
-        </section>
+        </Fragment>
     );
 };
 
