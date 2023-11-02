@@ -1,5 +1,7 @@
+export * from './use-fetch-programs';
+
 export * from './use-scrolled-down';
 
 export * from './use-toggle-visibility';
 
-export * from './use-search-param-update';
+export * from './use-update-search-param';

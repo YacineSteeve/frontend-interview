@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import type { SearchParams } from '@/types';
 
-export function useSearchParamUpdate<T extends keyof SearchParams>(paramName: T): (value: SearchParams[T][]) => void {
+export function useUpdateSearchParam<T extends keyof SearchParams>(paramName: T): (value: SearchParams[T][]) => void {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
