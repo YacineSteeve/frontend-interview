@@ -5,7 +5,8 @@ import {
     universityTypes,
     campusTypes,
     educationTypes,
-    grades
+    grades,
+    feesTypes,
 } from '@/utils/contants';
 
 export type Link = {
@@ -24,7 +25,8 @@ export type OptionalFilter =
     | 'gradeType'
     | 'educationType'
     | 'campusType'
-    | 'educationLanguage';
+    | 'educationLanguage'
+    | 'feesType';
 
 export type Filter = {
     label: string;
@@ -67,7 +69,7 @@ export type Program = {
         real: number;
         discounted: number | null;
         currency: 'TRY' | 'USD' | 'EUR';
-        type: 'Yearly' | 'Full Tuition';
+        type: (typeof feesTypes)[number];
     };
 };
 

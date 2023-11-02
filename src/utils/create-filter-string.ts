@@ -61,7 +61,7 @@ const createFilterString = (params: SearchParams): string => {
     const paramsStrings = Object.keys(paramFiltersMap).map((filter) => {
         return createFilter(params, filter as OptionalFilter);
     });
-    console.log(paramsStrings.filter(Boolean).join(' && '));
+
     return [
         deadlineString,
         queryString,

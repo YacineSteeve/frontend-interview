@@ -1,3 +1,7 @@
+export const defaultSearchParams = {
+    limit: '3',
+    ordering: '-can_apply,rank',
+};
 
 export const countries = [
     'Bosnia and Herzegovina',
@@ -45,4 +49,9 @@ export const languages = [
     '30% English 70% Turkish',
     '30% German 70% Turkish',
     '50% English 50% Turkish',
+] as const;
+
+export const feesTypes = [
+    'Full Tuition',
+    'Yearly',
 ] as const;

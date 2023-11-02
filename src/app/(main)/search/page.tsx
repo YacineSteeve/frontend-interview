@@ -1,7 +1,8 @@
-import {Fragment, Suspense} from 'react';
+import { Fragment, Suspense} from 'react';
 import type { NextPage } from 'next';
 import { redirect } from 'next/navigation';
 import { fetchPrograms } from './actions';
+import { defaultSearchParams } from '@/utils/contants';
 import type { SearchParams } from '@/types';
 import Filters from '@components/Filters';
 import Programs from '@components/Programs';
@@ -11,11 +12,6 @@ interface SearchPageProps {
 }
 
 const SearchPage: NextPage<SearchPageProps> = async ({ searchParams }) => {
-    const defaultSearchParams: SearchParams = {
-        limit: '2',
-        ordering: '-can_apply,rank',
-    };
-
     if (!searchParams.limit || !searchParams.ordering) {
         redirect('/search/?' + new URLSearchParams(defaultSearchParams).toString());
     }

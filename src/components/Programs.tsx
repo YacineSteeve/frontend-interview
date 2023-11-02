@@ -1,8 +1,10 @@
 import type { FunctionComponent } from 'react';
 import type { SearchParams, ProgramListResult } from '@/types';
+import { defaultSearchParams } from '@/utils/contants';
 import SortBy from '@components/SortBy';
 import SearchBar from '@components/SearchBar';
 import Program from '@components/Program';
+import Pagination from '@components/Pagination';
 
 interface ProgramsProps {
     params: SearchParams;
@@ -29,6 +31,11 @@ const Programs: FunctionComponent<ProgramsProps> = ({ params, paginatedPrograms 
                             <Program key={index} program={program}/>
                         ))
                 }
+                <Pagination
+                    currentPage={params.offset ? 1 + Math.ceil(parseInt(params.offset) / parseInt(params.limit)) : 1}
+                    totalPages={Math.ceil(totalNumberOfPrograms / parseInt(params.limit))}
+                    step={parseInt(params.limit || defaultSearchParams.limit)}
+                />
             </div>
         </section>
     );

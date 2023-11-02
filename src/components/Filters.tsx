@@ -7,6 +7,7 @@ import {
     educationTypes,
     campusTypes,
     languages,
+    feesTypes,
 } from '@/utils/contants';
 import { buildFilterOptions } from '@/utils/build-filter-options';
 import FilterInput  from '@components/FilterInput';
@@ -43,6 +44,11 @@ const filters: Filter[] = [
         label: 'Education Language',
         value: 'educationLanguage',
         options: buildFilterOptions(languages)
+    },
+    {
+        label: 'Fees Type',
+        value: 'feesType',
+        options: buildFilterOptions(feesTypes)
     },
 ];
 

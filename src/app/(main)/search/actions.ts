@@ -1,6 +1,7 @@
 'use server';
 
 import type { SearchParams, ProgramListResult, ResultItem, Program } from '@/types';
+import { defaultSearchParams } from '@/utils/contants';
 import databaseClient from '@/database/client';
 import createSortString from '@/utils/create-sort-string';
 import createFilterString from '@/utils/create-filter-string';
@@ -14,7 +15,7 @@ const hasExpand = (item: ProgramItem): item is ProgramItem & { expand: Record<st
 };
 
 export async function fetchPrograms(params: SearchParams): Promise<ProgramListResult> {
-    const perPage = parseInt(params.limit || '10');
+    const perPage = parseInt(params.limit || defaultSearchParams.limit);
     const page = 1 + (parseInt(params.offset || '0') / perPage);
 
     const data = await databaseClient.collection('programs').getList<ProgramItem>(page, perPage, {
