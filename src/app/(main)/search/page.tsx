@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import type { NextPage, Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { defaultSearchParams } from '@/utils/contants';
-import type { SearchParams } from '@/types';
+import type { QueryParams } from '@/types';
 import { Filters, Programs, SortBy, SearchBar } from './_components';
 
 export function generateMetadata(): Metadata {
@@ -13,7 +13,7 @@ export function generateMetadata(): Metadata {
 }
 
 interface SearchPageProps {
-    searchParams: SearchParams
+    searchParams: QueryParams
 }
 
 const SearchPage: NextPage<SearchPageProps> = ({ searchParams }) => {
@@ -27,13 +27,13 @@ const SearchPage: NextPage<SearchPageProps> = ({ searchParams }) => {
                 Find Your Dream Programs
             </div>
             <div className="flex gap-6 w-full">
-                <Filters params={searchParams}/>
+                <Filters queryParams={searchParams}/>
                 <section className="relative flex flex-col w-3/4">
                     <div className="flex justify-end items-start h-14">
                         <SortBy initialOrder={searchParams.ordering}/>
                     </div>
                     <SearchBar initialQuery={searchParams.query}/>
-                    <Programs paramsString={JSON.stringify(searchParams)}/>
+                    <Programs queriesString={JSON.stringify(searchParams)}/>
                 </section>
             </div>
         </Fragment>

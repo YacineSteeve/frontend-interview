@@ -19,7 +19,7 @@ export type Option = {
     value: string;
 };
 
-export type OptionalFilter =
+export type OptionalParam =
     | 'country'
     | 'provider_type'
     | 'grade_type'
@@ -30,17 +30,17 @@ export type OptionalFilter =
 
 export type Filter = {
     label: string;
-    value: OptionalFilter;
+    value: OptionalParam;
     options: Option[];
 };
 
-export type SearchParams = {
+export type QueryParams = {
     limit: string;
     ordering: string;
 } & Partial<{
     query: string;
     offset: string;
-} & Record<OptionalFilter, string>>;
+} & Record<OptionalParam, string>>;
 
 export type ChipType = 'language' | 'duration' | 'grade' | 'education' | 'fees';
 

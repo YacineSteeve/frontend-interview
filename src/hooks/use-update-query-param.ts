@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import type { SearchParams } from '@/types';
+import type { QueryParams } from '@/types';
 
-export function useUpdateSearchParam<T extends keyof SearchParams>(paramName: T): (value: SearchParams[T][]) => void {
+export function useUpdateQueryParam<T extends keyof QueryParams>(paramName: T): (newValue: QueryParams[T][]) => void {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    return useCallback((value: SearchParams[T][]) => {
+    return useCallback((newValue: QueryParams[T][]) => {
         const newParams = new URLSearchParams(searchParams);
-        const stringValue = (value || []).toString();
+        const stringValue = (newValue || []).toString();
 
         if (stringValue === '') {
             newParams.delete(paramName);

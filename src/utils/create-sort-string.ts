@@ -1,4 +1,4 @@
-import type { SearchParams } from '@/types';
+import type { QueryParams } from '@/types';
 
 const orderingMap = {
     '-can_apply': '-partner',
@@ -9,7 +9,7 @@ const orderingMap = {
 
 type OrderingMapKey = keyof typeof orderingMap;
 
-const createSortString = (orderingParam: SearchParams['ordering'] | null): string => {
+const createSortString = (orderingParam: QueryParams['ordering'] | null): string => {
     if (!orderingParam) {
         return '';
     }

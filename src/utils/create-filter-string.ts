@@ -1,4 +1,4 @@
-import type { SearchParams, OptionalFilter } from '@/types';
+import type { QueryParams, OptionalParam } from '@/types';
 import {
     countries,
     universityTypes,
@@ -9,7 +9,7 @@ import {
     feesTypes,
 } from '@/utils/contants';
 
-const paramFiltersMap: Record<OptionalFilter, readonly string[]> = {
+const paramFiltersMap: Record<OptionalParam, readonly string[]> = {
     'country': countries,
     'provider_type': universityTypes,
     'grade_type': grades,
@@ -19,7 +19,7 @@ const paramFiltersMap: Record<OptionalFilter, readonly string[]> = {
     'fees_type': feesTypes,
 };
 
-const fieldsFilterMap: Record<OptionalFilter, string> = {
+const fieldsFilterMap: Record<OptionalParam, string> = {
     'country': 'university.country',
     'provider_type': 'university.type',
     'grade_type': 'grade',
@@ -41,7 +41,7 @@ const fieldsQueryLookup = [
     'fees.type',
 ];
 
-const createFilter = (params: SearchParams, filter: OptionalFilter): string => {
+const createFilter = (params: QueryParams, filter: OptionalParam): string => {
     const indices = params[filter];
 
     if (!indices) {
@@ -55,20 +55,20 @@ const createFilter = (params: SearchParams, filter: OptionalFilter): string => {
     return `(${filterStrings.join(' || ')})`;
 };
 
-const createFilterString = (params: SearchParams): string => {
+const createFilterString = (queryParams: QueryParams): string => {
     const deadlineString = `applicationDeadline > "${new Date().toISOString()}"`;
-    const queryString = params.query
-        ? `(${fieldsQueryLookup.map((field) => `${field} ~ "${params.query}"`).join(' || ')})`
+    const queryString = queryParams.query
+        ? `(${fieldsQueryLookup.map((field) => `${field} ~ "${queryParams.query}"`).join(' || ')})`
         : '';
 
-    const paramsStrings = Object.keys(paramFiltersMap).map((filter) => {
-        return createFilter(params, filter as OptionalFilter);
+    const filtersStrings = Object.keys(paramFiltersMap).map((filter) => {
+        return createFilter(queryParams, filter as OptionalParam);
     });
 
     return [
         deadlineString,
         queryString,
-        ...paramsStrings
+        ...filtersStrings
     ].filter(Boolean).join(' && ');
 };
 

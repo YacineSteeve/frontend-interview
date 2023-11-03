@@ -2,7 +2,7 @@
 
 import { Fragment } from 'react';
 import type { FunctionComponent, MouseEvent } from 'react';
-import { useUpdateSearchParam } from '@/hooks';
+import { useUpdateQueryParam } from '@/hooks';
 
 interface PaginationProps {
     currentPage: number;
@@ -11,7 +11,7 @@ interface PaginationProps {
 }
 
 const Pagination: FunctionComponent<PaginationProps> = ({ currentPage, totalPages, step }) => {
-    const updateOffset = useUpdateSearchParam('offset');
+    const updateOffset = useUpdateQueryParam('offset');
 
     const handlePageChange = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();

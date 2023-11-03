@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
-import { SearchParams, ProgramListResult } from '@/types';
+import { QueryParams, ProgramListResult } from '@/types';
 
 
-export function useFetchPrograms(stringifiedQuery: string, fetcher: (params: SearchParams) => Promise<ProgramListResult>): {
+export function useFetchPrograms(stringifiedQuery: string, fetcher: (queryParams: QueryParams) => Promise<ProgramListResult>): {
     paginatedPrograms: ProgramListResult;
     isLoading: boolean;
     errored: boolean;
-    params: SearchParams;
+    queryParams: QueryParams;
 } {
-    const params: SearchParams = JSON.parse(stringifiedQuery);
+    const queryParams: QueryParams = JSON.parse(stringifiedQuery);
 
     const [errored, setErrored] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [paginatedPrograms, setPaginatedPrograms] = useState<ProgramListResult>({
         page: 1,
-        perPage: parseInt(params.limit),
+        perPage: parseInt(queryParams.limit),
         totalPages: 1,
         totalItems: 0,
         items: [],
@@ -32,5 +32,5 @@ export function useFetchPrograms(stringifiedQuery: string, fetcher: (params: Sea
         })();
     }, [stringifiedQuery, fetcher]);
 
-    return { paginatedPrograms, isLoading, errored, params };
+    return { paginatedPrograms, isLoading, errored, queryParams };
 }

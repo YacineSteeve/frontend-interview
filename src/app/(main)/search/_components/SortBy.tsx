@@ -1,8 +1,8 @@
 'use client';
 
 import type { FunctionComponent } from 'react';
-import type { Option, SearchParams } from '@/types';
-import { useToggleVisibility, useUpdateSearchParam } from '@/hooks';
+import type { Option, QueryParams } from '@/types';
+import { useToggleVisibility, useUpdateQueryParam } from '@/hooks';
 import Select from '@/components/Select';
 
 const sortOptions: Option[] = [
@@ -12,13 +12,13 @@ const sortOptions: Option[] = [
 ];
 
 interface SortByProps {
-    initialOrder: SearchParams['ordering'],
+    initialOrder: QueryParams['ordering'],
 }
 
 const SortBy: FunctionComponent<SortByProps> = ({ initialOrder }) => {
     const sortOption = sortOptions.find((option) => initialOrder.includes(option.value))
         || sortOptions[0] as Option;
-    const updateSortParam = useUpdateSearchParam('ordering');
+    const updateSortParam = useUpdateQueryParam('ordering');
     const { ref, isVisible, setIsVisible } = useToggleVisibility<HTMLButtonElement>(false);
 
     const chooseSort = (option: Option) => {

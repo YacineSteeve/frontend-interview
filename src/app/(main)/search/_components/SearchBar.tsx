@@ -1,15 +1,15 @@
 'use client';
 
 import type { FunctionComponent, ChangeEvent } from 'react';
-import { useUpdateSearchParam } from '@/hooks';
-import type { SearchParams } from '@/types';
+import { useUpdateQueryParam } from '@/hooks';
+import type { QueryParams } from '@/types';
 
 interface SearchBarProps {
-    initialQuery: SearchParams['query'];
+    initialQuery: QueryParams['query'];
 }
 
 const SearchBar: FunctionComponent<SearchBarProps> = ({ initialQuery }) => {
-    const updateQueryParam = useUpdateSearchParam('query');
+    const updateQueryParam = useUpdateQueryParam('query');
 
     const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
         updateQueryParam([event.target.value]);

@@ -3,7 +3,6 @@ import type { FunctionComponent } from 'react';
 import { defaultSearchParams } from '@/utils/contants';
 import ProgramSkeleton from './ProgramSkeleton';
 
-
 const ProgramsSkeleton: FunctionComponent = () => {
     return (
         <Fragment>

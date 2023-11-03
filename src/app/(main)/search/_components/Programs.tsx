@@ -11,11 +11,11 @@ import ProgramsError from './ProgramsError';
 import Pagination from './Pagination';
 
 interface ProgramsProps {
-    paramsString: string;
+    queriesString: string;
 }
 
-const Programs: FunctionComponent<ProgramsProps> = ({ paramsString }) => {
-    const { paginatedPrograms, isLoading, errored, params } = useFetchPrograms(paramsString, fetchPrograms);
+const Programs: FunctionComponent<ProgramsProps> = ({ queriesString }) => {
+    const { paginatedPrograms, isLoading, errored, queryParams } = useFetchPrograms(queriesString, fetchPrograms);
 
     const programs = paginatedPrograms.items;
     const totalNumberOfPrograms = paginatedPrograms.totalItems;
@@ -41,9 +41,9 @@ const Programs: FunctionComponent<ProgramsProps> = ({ paramsString }) => {
                                 ))
                 }
                 <Pagination
-                    currentPage={params.offset ? 1 + Math.ceil(parseInt(params.offset) / parseInt(params.limit)) : 1}
-                    totalPages={Math.ceil(totalNumberOfPrograms / parseInt(params.limit))}
-                    step={parseInt(params.limit || defaultSearchParams.limit)}
+                    currentPage={queryParams.offset ? 1 + Math.ceil(parseInt(queryParams.offset) / parseInt(queryParams.limit)) : 1}
+                    totalPages={Math.ceil(totalNumberOfPrograms / parseInt(queryParams.limit))}
+                    step={parseInt(queryParams.limit || defaultSearchParams.limit)}
                 />
             </div>
         </Fragment>

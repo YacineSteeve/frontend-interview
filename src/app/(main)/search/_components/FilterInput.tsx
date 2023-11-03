@@ -2,24 +2,24 @@
 
 import { useState, useEffect } from 'react';
 import type { FunctionComponent, ChangeEvent } from 'react';
-import { useToggleVisibility, useUpdateSearchParam } from '@/hooks';
+import { useToggleVisibility, useUpdateQueryParam } from '@/hooks';
 import type { Filter, Option } from '@/types';
 import Select from '@/components/Select';
 
 interface FilterInputProps {
     filter: Filter;
-    initialFilterParams: string[];
+    initialValues: string[];
 }
 
-const FilterInput: FunctionComponent<FilterInputProps> = ({ filter, initialFilterParams }) => {
+const FilterInput: FunctionComponent<FilterInputProps> = ({ filter, initialValues }) => {
     const [filteredOptions, setFilteredOptions] = useState<Option[]>(filter.options);
     const [optionSearch, setOptionSearch] = useState<string>('');
-    const updateSearchParam = useUpdateSearchParam(filter.value);
-    const selectedOptions = filter.options.filter((option) => initialFilterParams.includes(option.value));
+    const updateQueryParam = useUpdateQueryParam(filter.value);
+    const selectedOptions = filter.options.filter((option) => initialValues.includes(option.value));
     const { ref, isVisible, setIsVisible } = useToggleVisibility<HTMLDivElement>(false);
 
     const update = (selectedOptions: Option[]) => {
-        updateSearchParam(selectedOptions.map((option) => option.value));
+        updateQueryParam(selectedOptions.map((option) => option.value));
     };
 
     const selectFilter = (option: Option) => {

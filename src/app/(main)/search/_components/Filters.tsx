@@ -1,5 +1,5 @@
 import type { FunctionComponent } from 'react';
-import type { Filter, SearchParams } from '@/types';
+import type { Filter, QueryParams } from '@/types';
 import {
     countries,
     universityTypes,
@@ -52,10 +52,10 @@ const filters: Filter[] = [
 ];
 
 interface FiltersProps {
-    params: SearchParams
+    queryParams: QueryParams
 }
 
-const Filters: FunctionComponent<FiltersProps> = ({ params }) => {
+const Filters: FunctionComponent<FiltersProps> = ({ queryParams }) => {
     return (
         <section className="flex flex-col w-1/4 h-fit">
             <div className="flex h-14">
@@ -66,12 +66,12 @@ const Filters: FunctionComponent<FiltersProps> = ({ params }) => {
             <div className="flex p-5 w-full h-fit bg-white shadow-lg rounded-2xl border border-gray-300 flex-col gap-4 animate-translate-to-right">
                 {
                     filters.map((filter) => {
-                        const initialParams = params[filter.value];
+                        const filterValues = queryParams[filter.value];
 
                         return <FilterInput
                             key={filter.value}
                             filter={filter}
-                            initialFilterParams={initialParams ? initialParams.split(',') : []}
+                            initialValues={filterValues ? filterValues.split(',') : []}
                         />;
                     })
                 }

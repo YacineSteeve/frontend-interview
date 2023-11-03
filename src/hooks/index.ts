@@ -4,4 +4,4 @@ export * from './use-scrolled-down';
 
 export * from './use-toggle-visibility';
 
-export * from './use-update-search-param';
+export * from './use-update-query-param';

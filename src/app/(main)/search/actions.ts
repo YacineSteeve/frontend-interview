@@ -1,6 +1,6 @@
 'use server';
 
-import type { SearchParams, ProgramListResult, ResultItem, Program } from '@/types';
+import type { QueryParams, ProgramListResult, ResultItem, Program } from '@/types';
 import { defaultSearchParams } from '@/utils/contants';
 import databaseClient from '@/database/client';
 import createSortString from '@/utils/create-sort-string';
@@ -14,14 +14,14 @@ const hasExpand = (item: ProgramItem): item is ProgramItem & { expand: Record<st
     return Object.keys(item).some((key) => key === 'expand');
 };
 
-export async function fetchPrograms(params: SearchParams): Promise<ProgramListResult> {
-    const perPage = parseInt(params.limit || defaultSearchParams.limit);
-    const page = 1 + (parseInt(params.offset || '0') / perPage);
+export async function fetchPrograms(queryParams: QueryParams): Promise<ProgramListResult> {
+    const perPage = parseInt(queryParams.limit || defaultSearchParams.limit);
+    const page = 1 + (parseInt(queryParams.offset || '0') / perPage);
 
     const data = await databaseClient.collection('programs').getList<ProgramItem>(page, perPage, {
         expand: 'fees,university',
-        sort: createSortString(params.ordering),
-        filter: createFilterString(params),
+        sort: createSortString(queryParams.ordering),
+        filter: createFilterString(queryParams),
     });
 
     data.items = data.items.map((item: ProgramItem) => {

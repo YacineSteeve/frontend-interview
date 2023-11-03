@@ -6,7 +6,7 @@ import {
     EducationIcon,
     FeesIcon,
     LanguageIcon,
-} from './chip-icon';
+} from './chip-icons';
 
 const chips: Record<ChipType, Chip> = {
     grade: {
