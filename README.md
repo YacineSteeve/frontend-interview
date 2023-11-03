@@ -37,7 +37,7 @@ git clone https://github.com/YacineSteeve/frontend-interview.git
 
 2. Install Pocketbase for the database.
 
-Go on [Pocketbase](https://pocketbase.io/) and download the archive depending on your OS.
+Go on [Pocketbase](https://pocketbase.io/docs/) and download the archive depending on your OS.
 
 3. Extract the archive in the following directory in the project:
 
