@@ -4,3 +4,4 @@ node_modules
 yarn*.log
 dist
 logs.db
+pocketbase
