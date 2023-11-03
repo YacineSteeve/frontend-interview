@@ -27,7 +27,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ queriesString }) => {
                 <Suspense fallback={<Fragment>O program</Fragment>}>
                     {totalNumberOfPrograms} program{totalNumberOfPrograms > 1 && 's'}
                 </Suspense>
-                for you
+                &nbsp;for you
             </p>
             <div className="flex flex-col gap-6 mt-6 animate-translate-to-left">
                 {
