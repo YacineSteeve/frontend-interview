@@ -25,7 +25,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                 alt={program.university.name}
                 width={250}
                 height={190}
-                className="ml-3 w-auto h-auto min-w-[250px] min-h-[190px] rounded-2xl"
+                className="m-auto w-[250px] h-[190px] rounded-2xl"
             />
             <div className="flex md:block flex-col flex-1 items-center">
                 <p className="text-xl text-lightblack mb-1">
@@ -58,6 +58,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                 <hr className="w-11/12 my-1"/>
                 {
                     program.partner
+                    || (program.applicationDeadline !== '' && program.applicationDeadline > new Date().toISOString())
                         ?   <Fragment>
                             <p>
                                 Deadline:&nbsp;

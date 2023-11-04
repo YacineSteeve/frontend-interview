@@ -53,7 +53,7 @@ export type Program = {
     name: string;
     duration: number;
     partner: boolean;
-    applicationDeadline: Date | null;
+    applicationDeadline: string;
     season: string | null;
     campus: (typeof campusTypes)[number];
     educationType: (typeof educationTypes)[number];

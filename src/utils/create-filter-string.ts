@@ -56,7 +56,6 @@ const createFilter = (params: QueryParams, filter: OptionalParam): string => {
 };
 
 const createFilterString = (queryParams: QueryParams): string => {
-    const deadlineString = `applicationDeadline > "${new Date().toISOString()}"`;
     const queryString = queryParams.query
         ? `(${fieldsQueryLookup.map((field) => `${field} ~ "${queryParams.query}"`).join(' || ')})`
         : '';
@@ -65,11 +64,7 @@ const createFilterString = (queryParams: QueryParams): string => {
         return createFilter(queryParams, filter as OptionalParam);
     });
 
-    return [
-        deadlineString,
-        queryString,
-        ...filtersStrings
-    ].filter(Boolean).join(' && ');
+    return [ queryString, ...filtersStrings ].filter(Boolean).join(' && ');
 };
 
 export default createFilterString;
