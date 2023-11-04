@@ -27,7 +27,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({ initialQuery }) => {
             <label
                 htmlFor="search-program"
                 className={`absolute left-4 flex items-center p-1 h-1/2 bg-white peer-focus:bg-snow peer-focus:text-blue-500 ${
-                    initialQuery === ''
+                    initialQuery === undefined || initialQuery === ''
                         ? 'top-1/4 peer-focus:text-sm peer-focus:-top-1/4'
                         : 'text-sm -top-1/4'
                 }`}
