@@ -51,6 +51,7 @@ module.exports = {
             },
             screens: {
                 laptop: '992px',
+                desktop: '1120px',
             }
         },
     },

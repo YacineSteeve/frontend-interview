@@ -57,7 +57,7 @@ interface FiltersProps {
 
 const Filters: FunctionComponent<FiltersProps> = ({ queryParams }) => {
     return (
-        <div className="flex p-5 flex-col gap-4 h-[calc(100vh - 80px)] overflow-y-scroll min-[1120px]:max-h-none min-[1120px]:overflow-y-auto">
+        <div className="flex p-5 flex-col gap-4 h-[calc(100vh - 80px)] overflow-y-scroll xl:max-h-none xl:overflow-y-auto">
             {
                 filters.map((filter) => {
                     const filterValues = queryParams[filter.value];

@@ -17,13 +17,13 @@ const FiltersWrapper: FunctionComponent<FiltersWrapperProps> = ({ initialQueryPa
     return (
         <Fragment>
             <div className="flex w-full justify-between items-start h-14 px-3 lg:px-0">
-                <p className="hidden min-[1120px]:block text-2xl">
+                <p className="hidden xl:block text-2xl">
                     Filters
                 </p>
-                <span className="hidden md:block min-[1120px]:hidden"></span>
+                <span className="hidden md:block xl:hidden"></span>
                 <button
                     onClick={() => setIsVisible(true)}
-                    className="relative flex justify-evenly items-center gap-2 w-fit text-blue-500 px-3 py-1.5 rounded-xl outline outline-1 outline-blue-500 hover:bg-blue-50 focus:bg-blue-50 min-[1120px]:hidden">
+                    className="relative flex justify-evenly items-center gap-2 w-fit text-blue-500 px-3 py-1.5 rounded-xl outline outline-1 outline-blue-500 hover:bg-blue-50 focus:bg-blue-50 xl:hidden">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
@@ -39,16 +39,16 @@ const FiltersWrapper: FunctionComponent<FiltersWrapperProps> = ({ initialQueryPa
                 <SortBy initialOrder={initialQueryParams.ordering}/>
             </div>
             <section
-                className={`fixed top-0 z-30 min-[1120px]:z-auto min-[1120px]:relative min-[1120px]:flex flex-col w-screen min-[1120px]:w-1/4 h-screen min-[1120px]:h-fit bg-black bg-opacity-50 min-[1120px]:bg-inherit lg:-translate-x-[10vw] min-[1120px]:translate-x-0 ${
+                className={`fixed top-0 z-30 xl:z-auto xl:relative xl:flex flex-col w-screen xl:w-1/4 h-screen xl:h-fit bg-black bg-opacity-50 xl:bg-inherit lg:-translate-x-[10vw] xl:translate-x-0 ${
                     isVisible
                         ? ''
                         : 'hidden'
                 }`}>
                 <div
                     ref={ref}
-                    className="w-3/4 max-w-max min-[1120px]:w-full h-screen min-[1120px]:h-fit bg-white shadow-lg min-[1120px]:rounded-2xl border border-gray-300 min-[1120px]:animate-translate-to-right">
+                    className="w-3/4 max-w-max xl:w-full h-screen xl:h-fit bg-white shadow-lg xl:rounded-2xl border border-gray-300 xl:animate-translate-to-right">
                     <div
-                        className="flex justify-between items-center h-20 px-5 text-xl text-lightblack bg-gray-100 min-[1120px]:hidden">
+                        className="flex justify-between items-center h-20 px-5 text-xl text-lightblack bg-gray-100 xl:hidden">
                         Filter
                         <svg
                             onClick={() => setIsVisible(false)}
