@@ -15,7 +15,6 @@ The following features are implemented:
 
 Additional features:
 - Filter by fees type (Yearly, Full tuition,...)
-- Filter by price range
 
 
 **Everyhing on the page is clickable and functional.**
