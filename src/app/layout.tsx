@@ -9,7 +9,7 @@ export function generateMetadata(): Metadata {
     };
 }
 
-const RootLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
+const AppLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     return (
         <html lang="en">
             <body>{children}</body>
@@ -17,4 +17,4 @@ const RootLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     );
 };
 
-export default RootLayout;
+export default AppLayout;
