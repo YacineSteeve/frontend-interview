@@ -99,7 +99,7 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ filter, initialValue
                     className={`pl-4 text-lightblack rounded-md focus:outline-none ${
                         selectedOptions.length > 0
                             ? 'h-0 pr-4 focus:h-10 focus:my-2 focus:mx-auto focus:w-11/12 focus:bg-gray-100 group-focus:h-10 group-focus:bg-gray-100 group-focus:my-2 group-focus:mx-auto group-focus:w-11/12'
-                            : 'h-10 pr-16'
+                            : 'h-10 pr-10'
                     }`}
                 />
                 <div
@@ -127,6 +127,7 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ filter, initialValue
                         height="24"
                         fill="currentColor"
                         color="currentColor"
+                        className="z-10"
                     >
                         <path d="M7 10l5 5 5-5z"></path>
                     </svg>
@@ -140,10 +141,10 @@ const FilterInput: FunctionComponent<FilterInputProps> = ({ filter, initialValue
             </div>
             <label
                 htmlFor={`select-${filter.label}`}
-                className={`absolute left-4 flex items-center px-1 h-fit bg-white pointer-events-none peer-focus-within:text-blue-500 ${
+                className={`absolute left-3 px-1 max-w-full peer-focus-within:pr-1 text-ellipsis overflow-hidden bg-white pointer-events-none peer-focus-within:text-blue-500 ${
                     selectedOptions.length > 0
-                        ? 'text-xs top-6'
-                        : 'top-10 peer-focus-within:text-xs peer-focus-within:top-6'
+                        ? 'text-xs top-6 h-fit'
+                        : 'top-10 h-6 peer-focus-within:text-xs peer-focus-within:top-6'
                 }`}
             >
                 Select {filter.label}

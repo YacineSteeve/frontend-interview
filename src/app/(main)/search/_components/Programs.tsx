@@ -22,7 +22,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ queriesString }) => {
 
     return (
         <Fragment>
-            <p className="absolute top-0 left-0 text-md">
+            <p className="absolute bottom-full md:top-0 md:bottom-auto text-md">
                 We found&nbsp;
                 <Suspense fallback={<Fragment>O program</Fragment>}>
                     {totalNumberOfPrograms} program{totalNumberOfPrograms > 1 && 's'}

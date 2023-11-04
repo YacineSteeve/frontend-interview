@@ -57,27 +57,20 @@ interface FiltersProps {
 
 const Filters: FunctionComponent<FiltersProps> = ({ queryParams }) => {
     return (
-        <section className="flex-col w-1/4 h-fit hidden lg:flex">
-            <div className="flex h-14">
-                <p className="text-2xl">
-                    Filters
-                </p>
-            </div>
-            <div className="flex p-5 w-full h-fit bg-white shadow-lg rounded-2xl border border-gray-300 flex-col gap-4 animate-translate-to-right">
-                {
-                    filters.map((filter) => {
-                        const filterValues = queryParams[filter.value];
+        <div className="flex p-5 flex-col gap-4 h-[calc(100vh - 80px)] overflow-y-scroll min-[1120px]:max-h-none min-[1120px]:overflow-y-auto">
+            {
+                filters.map((filter) => {
+                    const filterValues = queryParams[filter.value];
 
-                        return <FilterInput
-                            key={filter.value}
-                            filter={filter}
-                            initialValues={filterValues ? filterValues.split(',') : []}
-                        />;
-                    })
-                }
-                <ClearButton />
-            </div>
-        </section>
+                    return <FilterInput
+                        key={filter.value}
+                        filter={filter}
+                        initialValues={filterValues ? filterValues.split(',') : []}
+                    />;
+                })
+            }
+            <ClearButton/>
+        </div>
     );
 };
 

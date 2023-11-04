@@ -1,6 +1,4 @@
-export { default as Filters } from './Filters';
-
-export { default as SortBy } from './SortBy';
+export { default as FiltersWrapper } from './FiltersWrapper';
 
 export { default as SearchBar } from './SearchBar';
 

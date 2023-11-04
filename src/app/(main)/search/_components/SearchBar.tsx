@@ -16,7 +16,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({ initialQuery }) => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative animate-translate-to-left">
             <input
                 id="search-program"
                 type="search"
