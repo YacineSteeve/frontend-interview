@@ -23,7 +23,7 @@ const SearchPage: NextPage<SearchPageProps> = ({ searchParams }) => {
 
     return (
         <Fragment>
-            <div className="flex flex-col mb-10 text-lightblack text-3xl text-center w-full md:text-5xl lg:text-6xl">
+            <div className="flex flex-col mb-12 text-lightblack text-4xl text-center w-full md:text-5xl">
                 Find Your Dream Programs
             </div>
             <div className="relative flex flex-wrap w-full">

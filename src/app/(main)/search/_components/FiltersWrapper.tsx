@@ -16,7 +16,7 @@ const FiltersWrapper: FunctionComponent<FiltersWrapperProps> = ({ initialQueryPa
 
     return (
         <Fragment>
-            <div className="flex w-full justify-between items-start h-14 px-3 lg:px-0">
+            <div className="flex w-full justify-between items-start h-16 px-3 lg:px-0 pt-2">
                 <p className="hidden xl:block text-2xl">
                     Filters
                 </p>

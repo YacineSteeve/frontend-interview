@@ -10,10 +10,10 @@ const Header: FunctionComponent = () => {
     const scrolledDown = useScrolledDown(75);
 
     return (
-        <header id="top" className={`fixed top-0 z-20 flex justify-center items-center w-screen transition-all ease-in-out duration-300 ${
-            scrolledDown ? 'h-[70px] py-0 bg-white shadow-sm' : 'h-28 py-3 bg-snow'
+        <header id="top" className={`fixed top-0 z-20 flex justify-center items-center w-screen h-20 border-b bg-white transition-all ease-in-out duration-300 ${
+            scrolledDown ? 'py-0 lg:shadow-sm' : 'lg:h-28 py-3 lg:border-none lg:bg-snow'
         }`}>
-            <div className="flex flex-1 justify-between items-center h-full mx-64 px-4">
+            <div className="flex flex-1 justify-between items-center h-full lg:mx-[5vw] xl:mx-44 pl-8 pr-0 lg:pr-4">
                 <Link href="/">
                     <Image
                         src="/images/askuni.png"
