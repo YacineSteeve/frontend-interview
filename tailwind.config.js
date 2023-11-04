@@ -49,6 +49,9 @@ module.exports = {
                 'bounce-br': 'bounceBottomRight 1s ease-in-out infinite',
                 'pulse': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
+            screens: {
+                laptop: '992px',
+            }
         },
     },
     plugins: [

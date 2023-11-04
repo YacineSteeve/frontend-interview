@@ -19,7 +19,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
     }) : 'N/A';
 
     return (
-        <div className="flex p-5 w-full h-fit bg-white shadow-lg rounded-2xl border border-gray-300 flex-row gap-8">
+        <div className="flex flex-col md:flex-row p-5 w-full h-fit bg-white shadow-lg rounded-2xl border border-gray-300 gap-8">
             <Image
                 src={`/images/universities/${program.university.picture}`}
                 alt={program.university.name}
@@ -27,7 +27,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                 height={190}
                 className="ml-3 w-auto h-auto min-w-[250px] min-h-[190px] rounded-2xl"
             />
-            <div className="flex-1">
+            <div className="flex md:block flex-col flex-1 items-center">
                 <p className="text-xl text-lightblack mb-1">
                     {program.university.name}
                 </p>
@@ -37,14 +37,14 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                 <p className="text-lightblack">
                     {program.name}
                 </p>
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="flex justify-center md:justify-start flex-wrap gap-2 mt-2">
                     <Chip label={program.language} type="language"/>
                     <Chip label={`${program.duration} years`} type="duration"/>
                     <Chip label={program.educationType} type="education"/>
                     <Chip label={program.grade} type="grade"/>
                 </div>
             </div>
-            <div className="flex flex-col justify-start items-center w-1/4 pl-4 border-l child:text-center">
+            <div className="flex flex-col justify-start items-center md:w-1/4 pl-4 md:border-l child:text-center">
                 {
                     program.fees.discounted !== 0 &&
                         <p className="line-through">
@@ -65,7 +65,7 @@ const Program: FunctionComponent<ProgramProps> = ({ program }) => {
                                     {formattedDate}
                                 </span>
                             </p>
-                            <p>
+                            <p className="pb-2">
                                 Season: {program.season}
                             </p>
                             <CardButton

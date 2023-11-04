@@ -100,9 +100,9 @@ const socialLinks: FooterLink[] = [
 
 const Footer: FunctionComponent = () => {
     return (
-        <footer className="pt-24 pb-7 bg-lightgrey">
-            <div className="mx-52 px-3">
-                <div className="flex gap-20 justify-between child:flex child:flex-col child:w-1/4 child:mb-10">
+        <footer className="w-screen pt-24 pb-7 bg-lightgrey">
+            <div className="md:mx-16 lg:mx-52 px-3">
+                <div className="flex flex-wrap lg:flex-nowrap gap-5 lg:gap-20 justify-between md:mx-16 child:flex child:flex-col lg:child:w-1/4 child:mb-10">
                     <div className="gap-6">
                         <Link href="/">
                             <Image
@@ -142,7 +142,7 @@ const Footer: FunctionComponent = () => {
                     }
                 </div>
                 <hr className="mt-7"/>
-                <div className="flex justify-between pt-7">
+                <div className="flex flex-wrap justify-center md:justify-between pt-7">
                     <p>&copy; 2023-2023 Askuni. All Rights Reserved</p>
                     <ul className="flex gap-3">
                         {

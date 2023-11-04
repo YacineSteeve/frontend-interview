@@ -57,7 +57,7 @@ interface FiltersProps {
 
 const Filters: FunctionComponent<FiltersProps> = ({ queryParams }) => {
     return (
-        <section className="flex flex-col w-1/4 h-fit">
+        <section className="flex-col w-1/4 h-fit hidden lg:flex">
             <div className="flex h-14">
                 <p className="text-2xl">
                     Filters

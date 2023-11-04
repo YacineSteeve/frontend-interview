@@ -30,7 +30,7 @@ const SortBy: FunctionComponent<SortByProps> = ({ initialOrder }) => {
         <button
             ref={ref}
             onClick={() => setIsVisible((prevIsVisible) => !prevIsVisible)}
-            className="relative flex justify-evenly w-fit text-lightblack p-1.5 pl-4 rounded-2xl border-1 border-gray-200 outline outline-1 outline-gray-300 hover:outline-black focus:outline-2 focus:outline-blue-700"
+            className="relative flex justify-evenly w-fit text-lightblack p-1.5 pl-4 rounded-xl border-1 border-gray-200 outline outline-1 outline-gray-300 hover:outline-black focus:outline-2 focus:outline-blue-700"
         >
             {sortOption.label}
             <svg

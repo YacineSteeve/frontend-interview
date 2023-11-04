@@ -23,12 +23,12 @@ const SearchPage: NextPage<SearchPageProps> = ({ searchParams }) => {
 
     return (
         <Fragment>
-            <div className="flex flex-col mb-10 text-lightblack text-5xl">
+            <div className="flex flex-col mb-10 text-lightblack text-3xl text-center w-full md:text-5xl lg:text-6xl">
                 Find Your Dream Programs
             </div>
-            <div className="flex gap-6 w-full">
+            <div className="flex w-full">
                 <Filters queryParams={searchParams}/>
-                <section className="relative flex flex-col w-3/4">
+                <section className="relative flex flex-col flex-1 mx-6">
                     <div className="flex justify-end items-start h-14">
                         <SortBy initialOrder={searchParams.ordering}/>
                     </div>
